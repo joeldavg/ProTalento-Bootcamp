@@ -22,6 +22,8 @@ public class EjercicioIntegrador {
 		int posMax = 0;
 		int posMin = 0;
 		float sumaTotal = 0;
+		int cantRepMax = 0;
+		int cantRepMin = 0;
 		
 		
 		Scanner teclado = new Scanner(System.in);
@@ -41,11 +43,29 @@ public class EjercicioIntegrador {
 		sumaTotal = datos[0];
 		
 		for (int i = 1; i < datos.length; i++) {
-			if (datos[i] > max) {
+			
+			if (datos[i] >= max) {
+				
+				if (datos[i] == max) {
+						cantRepMax ++;			
+				}
+				else {
+					cantRepMax = 0;
+				}
+				
 				max = datos[i];
 				posMax = (byte) i;
+				
 			}
-			if (datos[i] < min) {
+			if (datos[i] <= min) {
+				
+				if (datos[i] == min) {
+					cantRepMin ++;			
+				}
+				else {
+					cantRepMin = 0;
+				}
+				
 				min = datos[i];
 				posMin = (byte) i;
 			}
@@ -53,11 +73,17 @@ public class EjercicioIntegrador {
 			sumaTotal += datos[i];
 		}
 		
-		System.out.println("--------------------------------");
+		System.out.println("-------------------------------------------------------------");
+		System.out.println(java.util.Arrays.toString(datos));
+		System.out.println();
 		System.out.println("Max: " + max);
 		System.out.println("posMax: " + posMax);
+		System.out.println("Rep. Max: " + cantRepMax);
+		System.out.println();
 		System.out.println("Min: " + min);
 		System.out.println("posMin: " + posMin);
+		System.out.println("Rep. Min: " + cantRepMin);
+		System.out.println();
 		System.out.println("Suma Toal: " + sumaTotal);
 		
 	}
