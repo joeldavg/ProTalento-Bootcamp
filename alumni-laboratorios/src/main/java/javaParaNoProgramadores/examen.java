@@ -5,11 +5,13 @@ public class examen {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		int b=2;
-        for (b++;b<=10;b++){
-            System.out.println(b);     
-        }
-
+		 boolean a = true;
+		 if (a) {
+		 	System.out.println ("A es verdadero");
+		 } else {
+		 	System.out.println ("A es falso");
+		 }
+		 
 	}
 
 }
