@@ -11,6 +11,7 @@ public class DB {
 		
 		//simular datos
 		
+		
 		Articulo res1 = new Articulo("Figura de marvel", 35940, "http://imagen.jpg", true, 10, true);
 		Articulo res2 = new Articulo("Figura de Accion", 34930, "http://otraimagen.jpg", true, 2, false);
 		
