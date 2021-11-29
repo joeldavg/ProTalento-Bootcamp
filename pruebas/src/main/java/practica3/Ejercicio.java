@@ -86,6 +86,8 @@ public class Ejercicio {
 			
 		}
 		
+		teclado.close();
+		
 		// procesamiento de datos
 		
 		Float auxNotaMasAlta = notaAlumno[0];
@@ -100,8 +102,7 @@ public class Ejercicio {
 				
 				if ( auxNotaMasAlta.equals(notaAlumno[i]) ) {
 					contadorNotaMasAlta++;
-				}
-				else {
+				} else {
 					contadorNotaMasAlta = 1;
 				}
 				auxNotaMasAlta = notaAlumno[i];
@@ -111,8 +112,7 @@ public class Ejercicio {
 				
 				if ( auxNotaMasBaja.equals(notaAlumno[i])) {
 					contadorNotaMasBaja++;
-				}
-				else {
+				} else {
 					contadorNotaMasBaja = 1;
 				}
 				auxNotaMasBaja = notaAlumno[i];
@@ -126,8 +126,7 @@ public class Ejercicio {
 		for (int i = 0; i < notaAlumno.length; i++) {
 			if ( notaAlumno[i] >= 7) {
 				contadorPromocionan++;
-			}
-			else {
+			} else {
 				contadorRecursan++;
 			}
 		}
@@ -139,6 +138,9 @@ public class Ejercicio {
 		
 		int posNotaMasAlta = 0;
 		int posNotaMasBaja = 0;
+		int posPromocionan = 0;
+		int posRecursan = 0;
+		
 
 		//carga de matrices, sabemos que auxNotaMasAlta & alumnoNotaMasBaja son notas mas alta y baja respectivamente
 		
@@ -164,12 +166,7 @@ public class Ejercicio {
 				
 				posNotaMasBaja++;
 			}
-		}
-		
-		int posPromocionan = 0;
-		int posRecursan = 0;
-		
-		for (int i = 0; i < notaAlumno.length; i++) {
+			
 			if ( notaAlumno[i] >= 7) {
 				
 				alumnoPromocionan[posPromocionan][0] = nombre[i];
@@ -177,15 +174,16 @@ public class Ejercicio {
 				alumnoPromocionan[posPromocionan][2] = numeroDeExamen[i];
 				alumnoPromocionan[posPromocionan][3] = notaAlumno[i];
 				posPromocionan++;
-			}
-			else {
+				
+			} else {
 				alumnoRecursan[posRecursan][0] = nombre[i];
 				alumnoRecursan[posRecursan][1] = apellido[i];
 				alumnoRecursan[posRecursan][2] = numeroDeExamen[i];
 				alumnoRecursan[posRecursan][3] = notaAlumno[i];
-				contadorRecursan++;
+				posRecursan++;
 			}
 		}
+		
 		
 		// Mostrar datos
 		
