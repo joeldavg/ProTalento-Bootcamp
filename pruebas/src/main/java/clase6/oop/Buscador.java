@@ -14,6 +14,7 @@ public class Buscador {
 		
 		// simular que esta buscando
 		System.out.println("Buscando... " + this.claveBusqueda);
+		System.out.println("------------------------");
 		
 		// como mi buscador necesita usar un objeto de la clase DB
 		// debe instanciar un objeto de dicha clase
@@ -31,6 +32,7 @@ public class Buscador {
 		if (this.resultados.length > 0) {
 			for (Articulo aux : this.resultados) {
 				aux.detalleArticulo();
+				System.out.println("------------------------");
 			}
 		}
 		else {

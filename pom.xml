@@ -8,5 +8,6 @@
   <modules>
   	<module>pruebas</module>
   	<module>alumni-laboratorios</module>
+  	<module>practica-adicional-semana3</module>
   </modules>
 </project>

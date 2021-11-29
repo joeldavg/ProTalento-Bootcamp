@@ -7,6 +7,8 @@ public class Laboratorio3Modulo2 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		/*
+		
 		Scanner teclado = new Scanner(System.in);
 		
 		String opcion;
@@ -26,7 +28,7 @@ public class Laboratorio3Modulo2 {
 		
 		System.out.println("Escribe la letra de la opción seleccionada");
 		
-		opcion = teclado.next();
+		opcion = teclado.nextLine();
 		
 		switch (opcion) {
 		case "A":
@@ -57,6 +59,8 @@ public class Laboratorio3Modulo2 {
 		}
 		
 		teclado.close();
+		
+		*/
 	}
 
 }
