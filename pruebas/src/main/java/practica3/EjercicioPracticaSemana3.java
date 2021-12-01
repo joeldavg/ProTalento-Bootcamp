@@ -3,10 +3,6 @@ package practica3;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import javax.swing.ProgressMonitor;
-
-import org.w3c.dom.Notation;
-
 public class EjercicioPracticaSemana3 {
 
 	public static void main(String[] args) {
