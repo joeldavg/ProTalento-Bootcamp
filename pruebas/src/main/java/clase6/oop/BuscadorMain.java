@@ -10,7 +10,7 @@ public class BuscadorMain {
 		
 		String claveDeBusqueda = "Iron man";
 		
-		buscador.definirClaveBusqueda(claveDeBusqueda);
+		buscador.setClaveBusqueda(claveDeBusqueda);
 		
 		buscador.buscar();
 		

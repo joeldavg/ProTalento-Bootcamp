@@ -4,17 +4,17 @@ public class Articulo {
 	
 	//atributos
 	
-	String titulo;
-	float precio;
-	String imagen;
-	boolean favorito;
-	boolean envioGratis;
-	boolean tieneDescuento;
-	boolean tieneCuotas;
-	int cantidad;
+	private String titulo;
+	private float precio;
+	private String imagen;
+	private boolean favorito;
+	private boolean envioGratis;
+	private boolean tieneDescuento;
+	private boolean tieneCuotas;
+	private int cantidad;
 	
 	///constructor
-	Articulo(String titulo, float precio, String imagen, boolean favorito, 
+	public Articulo(String titulo, float precio, String imagen, boolean favorito, 
 			int cantidad, boolean tieneCuotas){
 		
 		if (precio > 20000) {
@@ -28,14 +28,60 @@ public class Articulo {
 		this.tieneCuotas = tieneCuotas;		
 	}
 	
-	
 	//metodos
 	
-	void agregarAFavorito() {
+	
+	
+	public void agregarAFavorito() {
 		this.favorito = !this.favorito;
 	}
 	
-	void detalleArticulo() {
+	public boolean isFavorito() {
+		return favorito;
+	}
+
+	public void setFavorito(boolean favorito) {
+		this.favorito = favorito;
+	}
+
+	public boolean isEnvioGratis() {
+		return envioGratis;
+	}
+
+	public void setEnvioGratis(boolean envioGratis) {
+		this.envioGratis = envioGratis;
+	}
+
+	public boolean isTieneDescuento() {
+		return tieneDescuento;
+	}
+
+	public void setTieneDescuento(boolean tieneDescuento) {
+		this.tieneDescuento = tieneDescuento;
+	}
+
+	public String getTitulo() {
+		// titulos sean UPPER CASE
+		return titulo.toUpperCase();
+	}
+
+	public float getPrecio() {
+		return precio;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public boolean isTieneCuotas() {
+		return tieneCuotas;
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void detalleArticulo() {
 		System.out.println("Titulo: " + this.titulo);
 		System.out.println("Precio: " + this.precio);
 		//completar

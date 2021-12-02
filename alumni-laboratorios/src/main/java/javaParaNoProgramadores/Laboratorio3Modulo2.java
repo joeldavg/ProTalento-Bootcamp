@@ -28,26 +28,26 @@ public class Laboratorio3Modulo2 {
 		
 		opcion = teclado.next();
 		
-		switch (opcion) {
-		case "A":
+		switch (opcion.charAt(0)) {
+		case 'A':
 			System.out.println("Ha seleccionado Documentación");
 			break;
-		case "B":
+		case 'B':
 			System.out.println("Ha seleccionado Cotización");
 			break;
-		case "C":
+		case 'C':
 			System.out.println("Ha seleccionado Asistencia");
 			break;
-		case "D":
+		case 'D':
 			System.out.println("Ha seleccionado Siniestros");
 			break;
-		case "E":
+		case 'E':
 			System.out.println("Ha seleccionado Información de Pagos");
 			break;
-		case "F":
+		case 'F':
 			System.out.println("Ha seleccionado Otras Consultas");
 			break;
-		case "G":
+		case 'G':
 			System.out.println("Ha seleccionado Anulación");
 			break;
 
