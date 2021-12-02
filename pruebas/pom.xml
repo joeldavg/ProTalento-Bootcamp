@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>protalento-bootcamp</groupId>
-    <artifactId>proyecto1</artifactId>
+    <artifactId>app-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>pruebas</artifactId>
