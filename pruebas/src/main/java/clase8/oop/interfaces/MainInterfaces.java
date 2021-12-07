@@ -1,9 +1,10 @@
 package clase8.oop.interfaces;
 
+import java.util.Arrays;
+
 public class MainInterfaces {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		Avion a = new Avion();
 		Helicoptero h = new Helicoptero();
@@ -18,6 +19,7 @@ public class MainInterfaces {
 				Aterrizable atr = (Aterrizable)v;
 				
 				atr.aterrizar();
+				
 			}else {
 				System.out.println(v + "- No puede aterrizar, no cumple contrato");
 			}

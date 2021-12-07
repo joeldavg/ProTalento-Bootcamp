@@ -17,11 +17,18 @@ public final class Director extends Persona {
 		this.empACargo = empACargo;
 	}
 	
-	@Override
-	public void detalle() {
+	/*public void detalle() {
 		// TODO Auto-generated method stub
 		super.detalle();
 		System.out.println("Empleados a cargo: " + this.getEmpACargo());
+	}*/
+	
+	//implimentar el metdo abstracto del padre
+	
+	public void detallar() {
+		// TODO Auto-generated method stub
+		System.out.println("Empleados a cargo: " + this.getEmpACargo());
+
 	}
 	
 	public static void delegar(Empleado empleado, String tarea) {

@@ -26,11 +26,18 @@ public class Empleado extends Persona {
 		this.id = id;
 	}
 	
+	/*
 	public void detalle() {
 		// al padre hace!
 		super.detalle();
 		
 		//muestra la propio
+		System.out.println("Id: " + this.getId());
+		
+	}*/
+	
+	public void detallar() {
+		// TODO Auto-generated method stub
 		System.out.println("Id: " + this.getId());
 		
 	}

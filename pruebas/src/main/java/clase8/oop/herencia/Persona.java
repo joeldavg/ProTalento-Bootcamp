@@ -1,6 +1,6 @@
 package clase8.oop.herencia;
 
-public class Persona {
+public abstract class Persona {
 	
 	//atributos
 	private String nombre;
@@ -41,11 +41,15 @@ public class Persona {
 	public void detalle() {
 		System.out.println(this.toString());
 		//mandar a archivo!
+		//ahora puede llamar a detallar
+		detallar();
 	}
 	
 	// metodo es del Object, pero Persona le cambia el comportamiento
 	public String toString() {
 		return "Persona [nombre=" + nombre + ", apellido=" + apellido + ", colorPelo=" + colorPelo + "]";
 	}
+	
+	public abstract void detallar(); // no esta implementado > los hijos deben implementar el comportamiento
 	
 }
