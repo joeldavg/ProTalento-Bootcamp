@@ -6,8 +6,8 @@ public class Avion extends Volador implements Aterrizable {
 	private Integer cantidadPasajeros;
 	
 		
-	public Avion(String aerolinea, Integer cantidadPasajeros) {
-		super();
+	public Avion(String nombre, String aerolinea, Integer cantidadPasajeros) {
+		super(nombre);
 		this.aerolinea = aerolinea;
 		this.cantidadPasajeros = cantidadPasajeros;
 	}
