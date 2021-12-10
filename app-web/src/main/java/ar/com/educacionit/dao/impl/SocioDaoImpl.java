@@ -25,6 +25,17 @@ public class SocioDaoImpl implements ICrud {
 		
 	}
 	
-	
+	public Socios[] finaAll() {
+		String sql = "select * from socios";
+		System.out.println("Ejecutando sql: " + sql);
+		
+		Socios socio1 = new Socios(1L, "JOEL1", "GUZMAN", "JOEL@GMAIL.COM", "AVE 13", 1L);
+		Socios socio2 = new Socios(2L, "JOEL2", "GUZMAN", "JOEL@GMAIL.COM", "AVE 13", 1L);
+		Socios socio3 = new Socios(3L, "JOEL3", "GUZMAN", "JOEL@GMAIL.COM", "AVE 13", 1L);
+		
+		Socios[] res = new Socios[] {socio1, socio2, socio3};
+		
+		return res;
+	}
 
 }
