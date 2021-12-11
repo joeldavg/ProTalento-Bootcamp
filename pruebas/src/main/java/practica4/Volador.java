@@ -21,5 +21,9 @@ public abstract class Volador {
 		return "Volador [nombre=" + nombre + "]";
 	}
 	
-		
+	public void solicitudAterrizar() {
+		// TODO Auto-generated method stub
+		System.out.println("Torre de control, se comunica " + getNombre() + " solicitando pista para aterrizar, cambio y fuera.");
+	}
+	
 }

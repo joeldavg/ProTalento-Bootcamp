@@ -3,19 +3,19 @@ package practica4;
 public class Avion extends Volador implements Aterrizable {
 	
 	private String aerolinea;
-	private Integer cantidadPasajeros;
+	private Integer asientos;
 	
 		
-	public Avion(String nombre, String aerolinea, Integer cantidadPasajeros) {
+	public Avion(String nombre, String aerolinea, Integer asientos) {
 		super(nombre);
 		this.aerolinea = aerolinea;
-		this.cantidadPasajeros = cantidadPasajeros;
+		this.asientos = asientos;
 	}
+	
 
-
-	public void aterizar() {
+	public void aterrizar() {
 		// TODO Auto-generated method stub
-		System.out.println();
+		System.out.println(getNombre() + " cumple contrato aterrizable, tiene pista disponible para aterrizar.");
 	}
 
 
@@ -27,13 +27,13 @@ public class Avion extends Volador implements Aterrizable {
 		this.aerolinea = aerolinea;
 	}
 
-	public Integer getCantidadPasajeros() {
-		return cantidadPasajeros;
+	public Integer getasientos() {
+		return asientos;
 	}
 
-	public void setCantidadPasajeros(Integer cantidadPasajeros) {
-		this.cantidadPasajeros = cantidadPasajeros;
+	@Override
+	public String toString() {
+		return super.toString() + " Avion [aerolinea=" + aerolinea + ", asientos=" + asientos + "]";
 	}
-
 
 }
