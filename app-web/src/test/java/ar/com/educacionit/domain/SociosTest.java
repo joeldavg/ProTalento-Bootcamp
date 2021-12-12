@@ -33,6 +33,10 @@ public class SociosTest {
 			System.out.println("se ha encontrado al socios: " + otroSocio);
 		}
 		
+		//usar el findAll()
+		
+		
+		
 	}
 
 }

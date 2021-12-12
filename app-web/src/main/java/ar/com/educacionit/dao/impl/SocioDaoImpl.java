@@ -10,32 +10,32 @@ public class SocioDaoImpl implements ICrud {
 		//mas adelante veremos como conectarnos a la db
 		//insertar datos
 		
-		String sql = "INSERT INTO SOCIOS(nombre, apellido, email, direccion) VALUES('JOEL', 'GUZMAN', 'JOEL@GMAIL.COM', 'AVE 13')";
+		String sql = "INSERT INTO socios(nombre, apellido, email, direccion) VALUES('joel', 'guzman', 'joel@hotmail.com', 'ave 13')";
 		System.out.println("Ejecutando sql: " + sql);
 		
-		return new Socios(10L, "JOEL", "GUZMAN", "JOEL@GMAIL.COM", "AVE 13", 1L);
+		return new Socios(10L, "joel", "guzman", "joel@hotmail.com", "ave 13", 1L);
 	}
 
 	public Socios findById(Long id) {
 		
-		String sql = "SELECT * FROM SOCIOS WHERE ID = " + id;
+		String sql = "SELECT * FROM socios WHERE id = " + id;
 		System.out.println("Ejecutando sql: " + sql);
 		
-		return new Socios(id, "JOEL", "GUZMAN", "JOEL@GMAIL.COM", "AVE 13", 1L);
+		return new Socios(id, "joel", "guzman", "joel@hotmail.com", "ave 13", 1L);
 		
 	}
 	
-	public Socios[] finaAll() {
-		String sql = "select * from socios";
+	public Socios[] findAll() {
+		
+		String sql = "SELECT * FROM socios";
 		System.out.println("Ejecutando sql: " + sql);
 		
-		Socios socio1 = new Socios(1L, "JOEL1", "GUZMAN", "JOEL@GMAIL.COM", "AVE 13", 1L);
-		Socios socio2 = new Socios(2L, "JOEL2", "GUZMAN", "JOEL@GMAIL.COM", "AVE 13", 1L);
-		Socios socio3 = new Socios(3L, "JOEL3", "GUZMAN", "JOEL@GMAIL.COM", "AVE 13", 1L);
+		Socios socio1 = new Socios(1L, "joel", "guzman", "joel@hotmail.com", "ave 13", 1L);
+		Socios socio2 = new Socios(2L, "joel", "guzman", "joel@hotmail.com", "ave 13", 1L);
+		Socios socio3 = new Socios(3L, "joel", "guzman", "joel@hotmail.com", "ave 13", 1L);
 		
-		Socios[] res = new Socios[] {socio1, socio2, socio3};
 		
-		return res;
+		return new Socios[] {socio1, socio2, socio3};
 	}
 
 }

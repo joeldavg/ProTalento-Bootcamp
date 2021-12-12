@@ -4,6 +4,8 @@ import ar.com.educacionit.domain.Socios;
 
 public interface ICrud {
 	
+	// DAO -> Data Access Object
+	
 	//create
 	public Socios create(Socios socioACrear);
 	
@@ -11,7 +13,7 @@ public interface ICrud {
 	public Socios findById(Long id);
 	//despues completo los demas
 	
-	//select * from
+	//SELECT * FROM
 	public Socios[] findAll();
 	
 }
