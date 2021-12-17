@@ -1,11 +1,11 @@
 package ar.com.educacionit.dao.impl;
 
-import ar.com.educacionit.dao.ICrud;
+import ar.com.educacionit.dao.SociosDao;
 import ar.com.educacionit.domain.Socios;
 
-public class SocioDaoImpl implements ICrud {
+public class SocioDaoImpl implements SociosDao {
 
-	public Socios create(Socios socio) {
+	public Socios save(Socios socio) {
 		
 		//mas adelante veremos como conectarnos a la db
 		//insertar datos
@@ -16,7 +16,7 @@ public class SocioDaoImpl implements ICrud {
 		return new Socios(10L, "joel", "guzman", "joel@hotmail.com", "ave 13", 1L);
 	}
 
-	public Socios findById(Long id) {
+	public Socios getOne(Long id) {
 		
 		String sql = "SELECT * FROM socios WHERE id = " + id;
 		System.out.println("Ejecutando sql: " + sql);
@@ -36,6 +36,20 @@ public class SocioDaoImpl implements ICrud {
 		
 		
 		return new Socios[] {socio1, socio2, socio3};
+	}
+
+	public void delete(Long id) {
+		String sql = "DELETE FROM socios WHERE id = " + id;
+
+		System.out.println(sql);
+	}
+
+	public void update(Socios entity) {
+		String sql = "UPDATE socios "
+				+ "SET direccion = '" + entity.getDireccion() + "', apellido = '" + entity.getApellido() + 
+				"', paises_id = " + entity.getPaisesId() + " WHERE  id = 1";
+		
+		System.out.println(sql);
 	}
 
 }
