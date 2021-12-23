@@ -13,7 +13,6 @@ public class Marcas {
 		this.codigo = codigo;
 		this.habilitada = habilitada;
 	}
-
 	
 
 	public Marcas(String marca, String codigo, Long habilitada) {

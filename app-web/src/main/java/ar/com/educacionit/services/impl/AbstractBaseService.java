@@ -7,12 +7,11 @@ public class AbstractBaseService<T> implements GenericService<T> {
 	
 	protected GenericDao<T> genericDao;
 	
-	
-	public AbstractBaseService(GenericDao<T> genericDao) {
-		super();
-		this.genericDao = genericDao;
+	//constructor
+	public AbstractBaseService(GenericDao<T> daoDelHijo) {
+		this.genericDao = daoDelHijo;
 	}
-
+	
 	public T getOne(Long id) {
 		return this.genericDao.getOne(id);
 	}

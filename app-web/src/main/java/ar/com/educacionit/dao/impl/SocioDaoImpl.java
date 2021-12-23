@@ -10,7 +10,8 @@ public class SocioDaoImpl implements SociosDao {
 		//mas adelante veremos como conectarnos a la db
 		//insertar datos
 		
-		String sql = "INSERT INTO socios(nombre, apellido, email, direccion) VALUES('joel', 'guzman', 'joel@hotmail.com', 'ave 13')";
+		String sql = "INSERT INTO socios(nombre, apellido, email, direccion) "
+					+ "VALUES('joel', 'guzman', 'joel@hotmail.com', 'ave 13')";
 		System.out.println("Ejecutando sql: " + sql);
 		
 		return new Socios(10L, "joel", "guzman", "joel@hotmail.com", "ave 13", 1L);
@@ -46,8 +47,8 @@ public class SocioDaoImpl implements SociosDao {
 
 	public void update(Socios entity) {
 		String sql = "UPDATE socios "
-				+ "SET direccion = '" + entity.getDireccion() + "', apellido = '" + entity.getApellido() + 
-				"', paises_id = " + entity.getPaisesId() + " WHERE  id = 1";
+					+ "SET direccion = '" + entity.getDireccion() + "', apellido = '" + entity.getApellido() + "', "
+					+ "paises_id = " + entity.getPaisesId() + " WHERE id = 1";
 		
 		System.out.println(sql);
 	}

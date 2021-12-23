@@ -1,6 +1,8 @@
 package ar.com.educacionit.domain;
 
+import ar.com.educacionit.services.CategoriaService;
 import ar.com.educacionit.services.SociosService;
+import ar.com.educacionit.services.impl.CategoriaServiceImpl;
 import ar.com.educacionit.services.impl.SociosServiceImpl;
 
 public class SociosTest {
@@ -20,6 +22,9 @@ public class SociosTest {
 		Socios socio = new Socios(nombre, apellido, email, direccion, pais);
 		service.save(socio);
 		
+		CategoriaService cservice = new CategoriaServiceImpl();
+		Categorias categoria = new Categorias("Laptops", "abc123");
+		cservice.save(categoria);
 		
 	}
 

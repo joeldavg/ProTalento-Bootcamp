@@ -49,10 +49,5 @@ public class Categorias {
 	public String toString() {
 		return "Categoria [id=" + id + ", descripcion=" + descripcion + ", codigo=" + codigo + "]";
 	}
-	//contructor
-	
-	
-	
-	// metodos
 
 }

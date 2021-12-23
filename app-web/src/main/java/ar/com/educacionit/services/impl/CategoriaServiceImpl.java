@@ -10,5 +10,4 @@ public class CategoriaServiceImpl extends AbstractBaseService<Categorias> implem
 		super(new CategoriaDaoImpl());
 	}
 
-	
 }
