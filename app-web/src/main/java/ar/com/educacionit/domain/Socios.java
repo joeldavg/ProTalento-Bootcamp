@@ -1,6 +1,6 @@
 package ar.com.educacionit.domain;
 
-public class Socios {
+public class Socios implements Entity {
 	
 	private Long id;
 	private String nombre;
@@ -8,6 +8,10 @@ public class Socios {
 	private String email;
 	private String direccion;
 	private Long paisesId;
+	
+	public Socios() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public Socios(Long id, String nombre, String apellido, String email, String direccion, Long paisesId) {
 		this.id = id;
@@ -25,11 +29,11 @@ public class Socios {
 		this.direccion = direccion;
 		this.paisesId = paisesId;
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
-
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
