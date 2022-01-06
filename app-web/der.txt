@@ -1,0 +1,27 @@
+CLIENTE:
+- Id: Int
+- Nombre: Varchar(100)
+- Apellido: Varchar(100)
+- Tipo_Doc: Int
+- Numero_Doc: Varchar(10)
+- Direccion: Varchar(250)
+ETC...
+
+Banco:
+- Id: Int
+- Nombre: Varchar(100)
+- Codigo: Varchar(6)
+- Direccion: Varchar(250)
+
+
+Sucursal:
+- Id: Int
+- Banco_id: Int (FK)
+- 
+
+Cheques:
+- Id: Int
+- Monto: Float
+- Fecha_pago: 
+- Firmante: Varchar(150)
+

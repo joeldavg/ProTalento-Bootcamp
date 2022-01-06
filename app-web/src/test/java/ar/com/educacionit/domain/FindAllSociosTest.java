@@ -1,6 +1,6 @@
 package ar.com.educacionit.domain;
 
-import ar.com.educacionit.dao.impl.SocioDaoImpl;
+import ar.com.educacionit.dao.impl.SociosDaoImpl;
 
 public class FindAllSociosTest {
 
@@ -8,7 +8,7 @@ public class FindAllSociosTest {
 		
 		//creo la implementacion que me permite acceder a la db (ICrud)
 		
-		SocioDaoImpl socioImpl = new SocioDaoImpl();
+		SociosDaoImpl socioImpl = new SociosDaoImpl();
 		
 		Socios[] vectorSocios = socioImpl.findAll();
 		

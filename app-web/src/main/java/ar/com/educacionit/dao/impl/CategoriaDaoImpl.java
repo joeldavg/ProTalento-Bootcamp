@@ -2,13 +2,21 @@ package ar.com.educacionit.dao.impl;
 
 import ar.com.educacionit.dao.CategoriaDao;
 import ar.com.educacionit.domain.Categorias;
-import ar.com.educacionit.domain.Socios;
 
-public class CategoriaDaoImpl implements CategoriaDao {
+public class CategoriaDaoImpl extends JdbcDaoBase<Categorias> implements CategoriaDao {
+
+	public CategoriaDaoImpl() {
+		super("categorias");
+		// TODO Auto-generated constructor stub
+	}
 	
+	
+	/*
 	public Categorias getOne(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "SELECT * FROM categorias WHERE id = " + id;
+		System.out.println("Ejecutando sql: " + sql);
+		
+		return new Categorias(id, "categoria 1", "abc000");
 	}
 
 	public void delete(Long id) {
@@ -20,7 +28,7 @@ public class CategoriaDaoImpl implements CategoriaDao {
 		//mas adelante veremos como conectarnos a la db
 		//insertar datos
 		
-		String sql = "INSERT INTO socios(descripcion, codigo) "
+		String sql = "INSERT INTO categorias(descripcion, codigo) "
 					+ "VALUES('" + entity.getDescripcion() + "', '" + entity.getCodigo() + "')";
 		System.out.println("Ejecutando sql: " + sql);
 		
@@ -38,5 +46,5 @@ public class CategoriaDaoImpl implements CategoriaDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	*/
 }
