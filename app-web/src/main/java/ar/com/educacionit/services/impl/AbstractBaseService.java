@@ -1,5 +1,7 @@
 package ar.com.educacionit.services.impl;
 
+import java.util.List;
+
 import ar.com.educacionit.dao.GenericDao;
 import ar.com.educacionit.dao.exceptions.DuplicatedException;
 import ar.com.educacionit.dao.exceptions.GenericException;
@@ -28,8 +30,13 @@ public class AbstractBaseService<T> implements GenericService<T> {
 		return entity;
 	}
 
-	public void delete(Long id) {
-		this.genericDao.delete(id);
+	public void delete(Long id) throws ServiceException {
+		try {
+			this.genericDao.delete(id);
+		} catch (GenericException e) {
+			// TODO Auto-generated catch block
+			throw new ServiceException("Error guardar dato", e);
+		}
 	}
 
 	public T save(T entity) throws ServiceException {
@@ -47,7 +54,7 @@ public class AbstractBaseService<T> implements GenericService<T> {
 		this.genericDao.update(entity);
 	}
 
-	public T[] findAll() {
+	public List<T> findAll() {
 		return this.genericDao.findAll();
 	}
 

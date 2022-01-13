@@ -1,5 +1,7 @@
 package ar.com.educacionit.domain;
 
+import java.util.List;
+
 import ar.com.educacionit.dao.impl.SociosDaoImpl;
 
 public class FindAllSociosTest {
@@ -10,7 +12,7 @@ public class FindAllSociosTest {
 		
 		SociosDaoImpl socioImpl = new SociosDaoImpl();
 		
-		Socios[] vectorSocios = socioImpl.findAll();
+		List<Socios> vectorSocios = socioImpl.findAll();
 		
 		for (Socios socio : vectorSocios) {
 			System.out.println(socio);
