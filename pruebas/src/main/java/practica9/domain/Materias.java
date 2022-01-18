@@ -1,12 +1,12 @@
 package practica9.domain;
 
-public class Materia {
+public class Materias {
 
 	private Long id;
 	private String curso;
 	private String turno;
 	
-	public Materia(Long id, String curso, String turno) {
+	public Materias(Long id, String curso, String turno) {
 		this.id = id;
 		this.curso = curso;
 		this.turno = turno;
@@ -34,6 +34,11 @@ public class Materia {
 
 	public void setTurno(String turno) {
 		this.turno = turno;
+	}
+
+	@Override
+	public String toString() {
+		return "Materias [id=" + id + ", curso=" + curso + ", turno=" + turno + "]";
 	}
 	
 }

@@ -1,12 +1,16 @@
 package practica9.domain;
 
-public class Alumno {
+public class Alumnos {
 	
 	private Long matricula;
 	private String nombre;
 	private String apellido;
 	
-	public Alumno(Long matricula, String nombre, String apellido) {
+	/*public Alumnos() {
+		
+	}*/
+
+	public Alumnos(Long matricula, String nombre, String apellido) {
 		this.matricula = matricula;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -36,4 +40,9 @@ public class Alumno {
 		this.apellido = apellido;
 	}
 
+	@Override
+	public String toString() {
+		return "Alumnos [matricula=" + matricula + ", nombre=" + nombre + ", apellido=" + apellido + "]";
+	}
+	
 }
