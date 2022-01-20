@@ -1,18 +1,18 @@
 package practica9.db;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Set;
+import java.util.List;
 
 import practica9.domain.Entity;
 
 
 public class DatosDBMemoria<T extends Entity> {
 
-	private Set<T> entityCollections;
+	private List<T> entityCollections;
 	
 	public DatosDBMemoria() {
-		this.entityCollections = new HashSet<>();
+		this.entityCollections = new ArrayList<>();
 	}
 	
 	public void agregarEntidad(T entity) {
