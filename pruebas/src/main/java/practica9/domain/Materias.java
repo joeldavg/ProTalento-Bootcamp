@@ -1,12 +1,12 @@
 package practica9.domain;
 
-public class Materias {
+public class Materias extends Entity {
 
-	private Long id;
 	private String curso;
 	private String turno;
 	
 	public Materias(Long id, String curso, String turno) {
+		super(id);
 		this.id = id;
 		this.curso = curso;
 		this.turno = turno;

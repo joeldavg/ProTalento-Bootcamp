@@ -4,10 +4,4 @@ public interface Menu {
 
 	public void mostrarMenu();
 	
-	public void inscripcion();
-	
-	public void eliminarInscripcion();
-	
-	public void buscarInscripcion();
-	
 }

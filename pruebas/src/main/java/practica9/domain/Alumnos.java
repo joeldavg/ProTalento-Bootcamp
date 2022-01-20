@@ -1,6 +1,6 @@
 package practica9.domain;
 
-public class Alumnos {
+public class Alumnos extends Entity {
 	
 	private Long matricula;
 	private String nombre;
@@ -10,12 +10,21 @@ public class Alumnos {
 		
 	}*/
 
-	public Alumnos(Long matricula, String nombre, String apellido) {
+	public Alumnos(Long id, Long matricula, String nombre, String apellido) {
+		super(id);
 		this.matricula = matricula;
 		this.nombre = nombre;
 		this.apellido = apellido;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public Long getMatricula() {
 		return matricula;
 	}
@@ -42,7 +51,8 @@ public class Alumnos {
 
 	@Override
 	public String toString() {
-		return "Alumnos [matricula=" + matricula + ", nombre=" + nombre + ", apellido=" + apellido + "]";
+		return "Alumnos [id=" + id + ", matricula=" + matricula + ", nombre=" + nombre + ", apellido=" + apellido + "]";
 	}
+
 	
 }
