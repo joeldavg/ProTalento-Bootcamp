@@ -3,6 +3,7 @@ package practica9.db;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import practica9.domain.Entity;
 
@@ -44,6 +45,19 @@ public class DatosDBMemoria<T extends Entity> {
 			T entity = (T) iEntity.next();
 			if (entity.getId().equals(id)) {
 				System.out.println(entity);
+				break;
+			}
+			
+		}
+	}
+	
+	public void actualizarEntidad(T entity) {
+		ListIterator<T> iEntity = entityCollections.listIterator();
+		while (iEntity.hasNext()) {
+			T entityAux = (T) iEntity.next();
+			if (entityAux.getId().equals(entity.getId())) {
+				int index = entityCollections.indexOf(entityAux);
+				entityCollections.set(index, entity);
 				break;
 			}
 		}

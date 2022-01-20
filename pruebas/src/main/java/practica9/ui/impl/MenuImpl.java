@@ -22,7 +22,6 @@ public class MenuImpl implements Menu {
 		Scanner sc = new Scanner(System.in);
 		int response = 0;
 		do {
-			
 			System.out.println();
 			System.out.println("1. Crear.");
 			System.out.println("2. Listar.");
@@ -32,7 +31,6 @@ public class MenuImpl implements Menu {
 			System.out.println();
 			
 			response = sc.nextInt();
-			
 			switch (response) {
 			case 1:
 				crear();
@@ -57,22 +55,99 @@ public class MenuImpl implements Menu {
 				System.out.println("Ingrese opcion correcta:");
 				break;
 			}
-			
 		} while (response  != 0);
 	}
 	
 	private void actualizar() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void listar() {
-		System.out.println(" :: LISTAR ::");
-		
 		Scanner sc = new Scanner(System.in);
 		
 		int response = 0;
 		do {
+			System.out.println();
+			System.out.println(" :: ACTUALIZAR ::");
+			System.out.println();
+			System.out.println("1. Actualizar Almunos.");
+			System.out.println("2. Actualizar Materias.");
+			System.out.println("0. Regresar.");
+			System.out.println();
+
+			response = sc.nextInt();
+			switch (response) {
+			case 1:
+				actualizarAlumno();
+				break;
+			case 2:
+				actualizarMateria();
+				break;
+			case 0:
+				mostrarMenu();
+				break;
+			default:
+				System.out.println("Ingrese opcion correcta:");
+				break;
+			}
+		} while (response != 0);
+	}
+
+	private void actualizarAlumno() {
+		System.out.println(" :: ACTUALIZAR ALUMNO ::");
+		System.out.println();
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Ingrese id de Alumno a actualizar:");
+		Long id = sc.nextLong();
+		
+		alumnos.buscarPorId(id);
+		
+		System.out.println();
+		System.out.println("Ingresar matricula actualizada");
+		Long matricula = sc.nextLong();
+		System.out.println("Ingresar nombre actualizado");
+		String nombre = sc.next();
+		System.out.println("Ingresar apellido actualizado");
+		String apellido = sc.next();
+		
+		Alumnos alumnoActualizado = new Alumnos(id, matricula, nombre, apellido);
+		
+		alumnos.actualizarEntidad(alumnoActualizado);
+		
+		System.out.println();
+		System.out.println("Alumno con id=" + id + " fue actualizado correctamente!");
+	}
+
+	private void actualizarMateria() {
+		System.out.println(" :: ACTUALIZAR MATERIA ::");
+		System.out.println();
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Ingrese id de la Materia a actualizar:");
+		Long id = sc.nextLong();
+		
+		materias.buscarPorId(id);
+		
+		System.out.println();
+		System.out.println("Ingresar curso actualizado");
+		String curso = sc.next();
+		System.out.println("Ingresar turno actualizado");
+		String turno = sc.next();
+		
+		Materias materiaActualizada = new Materias(id, curso, turno);
+		
+		materias.actualizarEntidad(materiaActualizada);
+		
+		System.out.println();
+		System.out.println("Materia con id=" + id + " fue actualizada correctamente!");
+	}
+
+	private void listar() {
+		Scanner sc = new Scanner(System.in);
+		
+		int response = 0;
+		do {
+			System.out.println();
+			System.out.println(" :: LISTAR ::");
 			System.out.println();
 			System.out.println("1. Listar Almunos.");
 			System.out.println("2. Listar Materias.");
@@ -80,7 +155,6 @@ public class MenuImpl implements Menu {
 			System.out.println();
 
 			response = sc.nextInt();
-			
 			switch (response) {
 			case 1:
 				listarAlumno();
@@ -95,7 +169,6 @@ public class MenuImpl implements Menu {
 				System.out.println("Ingrese opcion correcta:");
 				break;
 			}
-			
 		} while (response != 0);
 	}
 
@@ -107,17 +180,16 @@ public class MenuImpl implements Menu {
 	private void listarMateria() {
 		System.out.println(" :: LISTA DE MATERIAS ::");
 		materias.listarEntidad();
-		
 	}
 
 	private void crear() {
-		System.out.println(" :: CREAR ::");
-		System.out.println();
-		
 		Scanner sc = new Scanner(System.in);
 		
 		int response = 0;
 		do {
+			System.out.println();
+			System.out.println(" :: CREAR ::");
+			System.out.println();
 			System.out.println("1. Crear Almuno.");
 			System.out.println("2. Crear Materia.");
 			System.out.println("0. Regresar.");
@@ -128,15 +200,12 @@ public class MenuImpl implements Menu {
 			switch (response) {
 			case 1:
 				crearAlumno();
-				response = 0;
 				break;
 			case 2:
 				crearMateria();
-				response = 0;
 				break;
 			case 0:
 				mostrarMenu();
-				response = 0;
 				break;
 			default:
 				System.out.println("Ingrese opcion correcta:");
@@ -144,7 +213,6 @@ public class MenuImpl implements Menu {
 			}
 			
 		} while (response != 0);
-		
 	}
 
 	private void crearAlumno() {
@@ -167,28 +235,6 @@ public class MenuImpl implements Menu {
 		
 		System.out.println();
 		System.out.println("Inscripcion exitosa!");
-		
-		int response = 0;
-		do {
-			System.out.println();
-			System.out.println("1. Inscribir nuevo Alumno.");
-			System.out.println("0. Regresar.");
-			response = sc.nextInt();
-
-			switch (response) {
-			case 1:
-				crearAlumno();
-				response = 0;
-				break;
-			case 0:
-				crear();
-				break;
-			default:
-				System.out.println("Ingrese opcion correcta:");
-				break;
-			}
-			
-		} while (response != 0);
 	}
 
 	private void crearMateria() {
@@ -209,38 +255,16 @@ public class MenuImpl implements Menu {
 		
 		System.out.println();
 		System.out.println("Inscripcion exitosa!");
-		System.out.println();
-		
-		int response = 0;
-		do {
-			System.out.println("1. Inscribir nueva Materia.");
-			System.out.println("0. Regresar.");
-			response = sc.nextInt();
-
-			switch (response) {
-			case 1:
-				crearMateria();
-				response = 0;
-				break;
-			case 0:
-				crear();
-				break;
-			default:
-				System.out.println("Ingrese opcion correcta:");
-				break;
-			}
-			
-		} while (response != 0);
 	}
 	
 	private void eliminar() {
-		System.out.println(" :: ELIMINAR ::");
-		System.out.println();
-		
 		Scanner sc = new Scanner(System.in);
 		
 		int response = 0;
 		do {
+			System.out.println();
+			System.out.println(" :: ELIMINAR ::");
+			System.out.println();
 			System.out.println("1. Eliminar Almuno.");
 			System.out.println("2. Eliminar Materia.");
 			System.out.println("0. Regresar.");
@@ -251,21 +275,17 @@ public class MenuImpl implements Menu {
 			switch (response) {
 			case 1:
 				eliminarAlumno();
-				response = 0;
 				break;
 			case 2:
 				eliminarMateria();
-				response = 0;
 				break;
 			case 0:
 				mostrarMenu();
-				response = 0;
 				break;
 			default:
 				System.out.println("Ingrese opcion correcta:");
 				break;
 			}
-			
 		} while (response != 0);
 	}
 
@@ -281,29 +301,6 @@ public class MenuImpl implements Menu {
 		alumnos.eliminarEntidad(id);
 		System.out.println();
 		System.out.println("Alumno con id=" + id + " fue eliminado correctamente!");
-		
-		int response = 0;
-		do {
-			System.out.println();
-			System.out.println("1. Eliminar otro Alumno.");
-			System.out.println("0. Regresar.");
-			response = sc.nextInt();
-
-			switch (response) {
-			case 1:
-				eliminarAlumno();
-				response = 0;
-				break;
-			case 0:
-				eliminar();
-				break;
-			default:
-				System.out.println("Ingrese opcion correcta:");
-				break;
-			}
-			
-		} while (response != 0);
-		
 	}
 
 	private void eliminarMateria() {
@@ -318,28 +315,5 @@ public class MenuImpl implements Menu {
 		materias.eliminarEntidad(id);
 		System.out.println();
 		System.out.println("Materia con id=" + id + " fue eliminado correctamente!");
-		
-		int response = 0;
-		do {
-			System.out.println();
-			System.out.println("1. Eliminar otra Materia.");
-			System.out.println("0. Regresar.");
-			response = sc.nextInt();
-
-			switch (response) {
-			case 1:
-				eliminarMateria();
-				response = 0;
-				break;
-			case 0:
-				eliminar();
-				break;
-			default:
-				System.out.println("Ingrese opcion correcta:");
-				break;
-			}
-			
-		} while (response != 0);
 	}
-
 }

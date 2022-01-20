@@ -9,7 +9,5 @@ public class Aplicacion {
 		
 		Menu menu = new MenuImpl();
 		menu.mostrarMenu();
-		
 	}
-
 }
