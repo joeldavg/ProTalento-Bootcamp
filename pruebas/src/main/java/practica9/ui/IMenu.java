@@ -1,6 +1,6 @@
 package practica9.ui;
 
-public interface Menu {
+public interface IMenu {
 
 	public void mostrarMenu();
 	

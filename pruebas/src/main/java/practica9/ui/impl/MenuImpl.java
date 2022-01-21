@@ -6,13 +6,13 @@ import practica9.db.AlumnosDB;
 import practica9.db.MateriasDB;
 import practica9.domain.Alumnos;
 import practica9.domain.Materias;
-import practica9.ui.Menu;
+import practica9.ui.IMenu;
 import practica9.validation.ValidarFormato;
 import practica9.validation.DBVaciaException;
 import practica9.validation.InvalidFormatExeption;
 import practica9.validation.RegistroNoExisteException;
 
-public class MenuImpl implements Menu {
+public class MenuImpl implements IMenu {
 	
 	AlumnosDB alumnos = new AlumnosDB();
 	MateriasDB materias = new MateriasDB();
