@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.ListIterator;
 
 import practica9.domain.Entity;
+import practica9.validation.DBVaciaException;
+import practica9.validation.RegistroNoExisteException;
 
 
 public class DatosDBMemoria<T extends Entity> {
@@ -20,34 +22,46 @@ public class DatosDBMemoria<T extends Entity> {
 		entityCollections.add(entity);
 	}
 	
-	public void eliminarEntidad(Long id) {
+	public void eliminarEntidad(Long id) throws RegistroNoExisteException {
 		
 		Iterator<T> iEntity = entityCollections.iterator();
+		Boolean isListed = false;
 		while (iEntity.hasNext()) {
 			T entity = (T) iEntity.next();
 			if (entity.getId().equals(id)) {
 				entityCollections.remove(entity);
+				isListed = true;
 				break;
 			}
+		}
+		if (!isListed) {
+			throw new RegistroNoExisteException("No existe registro con id=" + id);
 		}
 		
 	}
 	
-	public void listarEntidad() {
-		for (T entity : entityCollections) {
-			System.out.println(entity);
+	public void listarEntidad() throws DBVaciaException {
+		if (entityCollections.isEmpty()) {
+			throw new DBVaciaException("No hay registros en DB");
+		} else {
+			for (T entity : entityCollections) {
+				System.out.println(entity);
+			}
 		}
 	}
 	
-	public void buscarPorId(Long id) {
+	public void buscarPorId(Long id) throws RegistroNoExisteException {
+		Boolean isListed = false;
 		Iterator<T> iEntity = entityCollections.iterator();
 		while (iEntity.hasNext()) {
 			T entity = (T) iEntity.next();
 			if (entity.getId().equals(id)) {
-				System.out.println(entity);
+				isListed = true;
 				break;
 			}
-			
+		}
+		if (!isListed) {
+			throw new RegistroNoExisteException("No existe registro con id=" + id + ", crear registro o ingresar id correcto.");
 		}
 	}
 	

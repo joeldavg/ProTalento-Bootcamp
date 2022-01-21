@@ -5,16 +5,18 @@ public class Alumnos extends Entity {
 	private Long matricula;
 	private String nombre;
 	private String apellido;
+	private Long cursoId;
 	
 	/*public Alumnos() {
 		
 	}*/
 
-	public Alumnos(Long id, Long matricula, String nombre, String apellido) {
+	public Alumnos(Long id, Long matricula, String nombre, String apellido, Long cursoId) {
 		super(id);
 		this.matricula = matricula;
 		this.nombre = nombre;
 		this.apellido = apellido;
+		this.setCursoId(cursoId);
 	}
 
 	public Long getId() {
@@ -49,10 +51,18 @@ public class Alumnos extends Entity {
 		this.apellido = apellido;
 	}
 
-	@Override
-	public String toString() {
-		return "Alumnos [id=" + id + ", matricula=" + matricula + ", nombre=" + nombre + ", apellido=" + apellido + "]";
+	public Long getCursoId() {
+		return cursoId;
+	}
+	
+	public void setCursoId(Long cursoId) {
+		this.cursoId = cursoId;
 	}
 
+	@Override
+	public String toString() {
+		return "Alumnos [matricula=" + matricula + ", nombre=" + nombre + ", apellido=" + apellido + ", cursoId="
+				+ cursoId + "]";
+	}
 	
 }

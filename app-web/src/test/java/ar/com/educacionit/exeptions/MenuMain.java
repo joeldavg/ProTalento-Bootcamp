@@ -1,6 +1,5 @@
 package ar.com.educacionit.exeptions;
 
-import java.util.Scanner;
 
 public class MenuMain {
 
