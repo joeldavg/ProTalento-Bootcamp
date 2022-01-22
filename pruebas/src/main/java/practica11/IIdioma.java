@@ -2,6 +2,8 @@ package practica11;
 
 public interface IIdioma {
 
-	public void hablar();
+	public void decirNombre(String name);
+	
+	public String dominaIdioma();
 	
 }
