@@ -54,5 +54,13 @@ public class Personas {
 		}
 		return false;
 	}
+	
+	public void hablar(IIdioma idioma) {
+		if (contieneIdioma(idioma)) {
+			idioma.decirNombre(getNombre());
+		} else {
+			System.out.println("No he aprendido este idioma: " + idioma.getClass().getSimpleName());
+		}
+	}
 
 }
