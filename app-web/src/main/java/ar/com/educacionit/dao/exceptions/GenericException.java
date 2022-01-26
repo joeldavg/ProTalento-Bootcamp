@@ -6,5 +6,12 @@ public class GenericException extends Exception {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
+
+	public GenericException(String message, Throwable cause) {
+		super(message, cause);
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 	
 }

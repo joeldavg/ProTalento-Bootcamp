@@ -54,7 +54,7 @@ public class AbstractBaseService<T> implements GenericService<T> {
 		this.genericDao.update(entity);
 	}
 
-	public List<T> findAll() {
+	public List<T> findAll() throws GenericException {
 		return this.genericDao.findAll();
 	}
 
