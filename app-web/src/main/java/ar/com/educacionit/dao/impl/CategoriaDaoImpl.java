@@ -1,8 +1,10 @@
 package ar.com.educacionit.dao.impl;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import ar.com.educacionit.dao.CategoriaDao;
 import ar.com.educacionit.domain.Categorias;
-import ar.com.educacionit.domain.Socios;
 
 public class CategoriaDaoImpl extends JdbcDaoBase<Categorias> implements CategoriaDao {
 
@@ -12,57 +14,35 @@ public class CategoriaDaoImpl extends JdbcDaoBase<Categorias> implements Categor
 	}
 
 	@Override
-	public String getSaveSQL(Categorias entity) {
+	public String getSaveSQL() {
 		
 		//lo particular del sql
-		
-		return (" (descripcion,codigo) VALUES ('"+entity.getDescripcion()+"','"+entity.getCodigo()+"')");
-	}
-
-	@Override
-	public String getUpdateSQL(Categorias entity) {
-		
-		String sql = " descripcion='" + entity.getDescripcion() + "',";
-		sql += " codigo='" + entity.getCodigo() + "'";
+		String sql = "(descripcion,codigo,habilitada) VALUES (?,?,?)"; 
 		
 		return sql;
 	}
-	
-	
-	/*
-	public Categorias getOne(Long id) {
-		String sql = "SELECT * FROM categorias WHERE id = " + id;
-		System.out.println("Ejecutando sql: " + sql);
+
+	@Override
+	public void save(PreparedStatement st, Categorias entity) throws SQLException {
 		
-		return new Categorias(id, "categoria 1", "abc000");
+		st.setString(1, entity.getDescripcion());
+		st.setString(2, entity.getCodigo());
+		st.setLong(3, entity.getHabilitada());
 	}
 
-	public void delete(Long id) {
+	@Override
+	public String getUpdateSQL() {
+		
+		String sql = "descripcion = ?, habilitada = ?";
+		
+		return sql;
+	}
+
+	@Override
+	public void update(PreparedStatement st, Categorias entity) throws SQLException {
 		// TODO Auto-generated method stub
-		
+		st.setString(1, entity.getDescripcion());
+		st.setLong(2, entity.getHabilitada());
 	}
 
-	public Categorias save(Categorias entity) {
-		//mas adelante veremos como conectarnos a la db
-		//insertar datos
-		
-		String sql = "INSERT INTO categorias(descripcion, codigo) "
-					+ "VALUES('" + entity.getDescripcion() + "', '" + entity.getCodigo() + "')";
-		System.out.println("Ejecutando sql: " + sql);
-		
-		entity.setId(1L);
-		
-		return entity;
-	}
-
-	public void update(Categorias entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public Categorias[] findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	*/
 }

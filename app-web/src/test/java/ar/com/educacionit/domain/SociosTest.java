@@ -15,35 +15,31 @@ import ar.com.educacionit.services.impl.SociosServiceImpl;
 public class SociosTest {
 
 	public static void main(String[] args) throws ServiceException {
+		
 		//alguien cargo los datos desde teclado
-		
-		String nombre = "Joel";
-		String apellido = "Guzman";
+		String nombre = "JUAN";
+		String apellido = "PEREZ";
 		String dni = "123456789";
-		String email = "joel-guzman@hotmail.com";
-		String direccion = "calle 13";
-		Long pais = 1L;
+		String email = "mainmain@mail.com";
+		String direccion  = "calle 13";
+		Long pais = 1l;//1=ARG/2=COL/3=BRA ETC ETC
 		
-		
-		SociosService service = new SociosServiceImpl();
-		Socios socio = new Socios(nombre, apellido, email, direccion, pais);
-		service.save(socio); // Ctrl + T
+		SociosService service = new SociosServiceImpl();		
+		Socios socio = new Socios(nombre, apellido, email, direccion, pais);		
+		service.save(socio);//ctrl+t
 		
 		socio.setApellido("nuevo apellido");
 		socio.setNombre("nuevo nombre");
-		socio.setEmail("nuevoemail@email.com");
 		
 		service.update(socio);
 		
-		CategoriaService cservice = new CategoriaServiceImpl();
-		Categorias categoria = new Categorias("Laptops", "abc123");
-		cservice.save(categoria);
+		CategoriaService cservice = new CategoriaServiceImpl();		
+		Categorias categorias = new Categorias("televisore", "abc0", 1l);		
+		cservice.save(categorias);
 		
-		categoria.setDescripcion("nueva descripcion");
-		categoria.setCodigo("nuevo");
-		
-		cservice.update(categoria);
-		
+		categorias.setCodigo("0004");
+		categorias.setDescripcion("descripcion nueva");
+		cservice.update(categorias);
 	}
 
 }

@@ -15,7 +15,7 @@ import ar.com.educacionit.domain.Socios;
 
 public class MainJDBC {
 
-	public static void main(String[] args) throws GenericException, SQLException {
+	public static void main(String[] args) throws GenericException, SQLException  {
 		//Connection : conexion a la db con user y pass
 		//Statement  // PrepareStatement: sql
 		//ResultSet: datos (columnas / filas)
@@ -64,7 +64,7 @@ public class MainJDBC {
 			String direccion = rs.getString("direccion");
 			Long paisId = rs.getLong("paises_id");
 			
-			Socios socios = new Socios(id, nombre, apellido, email, direccion, paisId);
+			Socios socios = new Socios(id, nombre, apellido, email, direccion, paisId, new Date());
 			System.out.println(socios);
 
 		}

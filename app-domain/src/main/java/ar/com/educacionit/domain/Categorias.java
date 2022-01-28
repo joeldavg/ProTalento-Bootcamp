@@ -6,9 +6,10 @@ public class Categorias implements Entity {
 	private Long id;
 	private String descripcion;
 	private String codigo;
+	private Long habilitada;
 	
 	public Categorias() {
-		// TODO Auto-generated constructor stub
+
 	}
 	
 	//constructor
@@ -18,11 +19,18 @@ public class Categorias implements Entity {
 		this.codigo = codigo;
 	}
 	
-	public Categorias(String descripcion, String codigo) {
+	public Categorias(Long id, String descripcion, String codigo, Long habilitada) {
+		this.id = id;
 		this.descripcion = descripcion;
 		this.codigo = codigo;
+		this.habilitada = habilitada;
 	}
 	
+	public Categorias(String descripcion, String codigo, Long habilitada) {
+		this.descripcion = descripcion;
+		this.codigo = codigo;
+		this.habilitada = habilitada;
+	}
 	
 	//getters and setters
 	public Long getId() {
@@ -51,6 +59,14 @@ public class Categorias implements Entity {
 	
 	public String toString() {
 		return "Categoria [id=" + id + ", descripcion=" + descripcion + ", codigo=" + codigo + "]";
+	}
+
+	public Long getHabilitada() {
+		return habilitada;
+	}
+
+	public void setHabilitada(Long habilitada) {
+		this.habilitada = habilitada;
 	}
 
 }

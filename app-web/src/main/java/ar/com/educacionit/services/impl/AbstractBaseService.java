@@ -18,19 +18,19 @@ public class AbstractBaseService<T> implements GenericService<T> {
 	}
 	
 	public T getOne(Long id) throws ServiceException {
+		
 		T entity;
 		try {
 			entity = this.genericDao.getOne(id);
 		} catch (GenericException e) {
 			throw new ServiceException("Error de DB al intentar obtener entity id = " + id , e);
-		} finally {
-			//siempre se ejecuta
-			entity = null;
 		}
+		
 		return entity;
 	}
 
 	public void delete(Long id) throws ServiceException {
+		
 		try {
 			this.genericDao.delete(id);
 		} catch (GenericException e) {
@@ -40,22 +40,32 @@ public class AbstractBaseService<T> implements GenericService<T> {
 	}
 
 	public T save(T entity) throws ServiceException {
+	
 		try {
 			return this.genericDao.save(entity);
-		} catch (DuplicatedException de) {
+		} catch (DuplicatedException | GenericException de) {
 			de.printStackTrace();
 			//relanzo la exception como una ServiceException que contiene
 			//la exception original
-			throw new ServiceException("C101: No se ha podido grabar la entidad", de);
+			throw new ServiceException("No se ha podido grabar la entidad", de);
 		}
 	}
 
-	public void update(T entity) {
-		this.genericDao.update(entity);
+	public void update(T entity) throws ServiceException {
+		try {
+			this.genericDao.update(entity);
+		} catch (GenericException | DuplicatedException e) {
+			// TODO Auto-generated catch block
+			throw new ServiceException("No se ha podido actualizar la entidad", e);
+		}
 	}
 
-	public List<T> findAll() throws GenericException {
-		return this.genericDao.findAll();
+	public List<T> findAll() throws ServiceException {
+		try {
+			return this.genericDao.findAll();
+		} catch (GenericException e) {
+			throw new ServiceException("Error consultado entidad", e);
+		}
 	}
 
 }
