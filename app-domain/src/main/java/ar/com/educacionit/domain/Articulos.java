@@ -3,24 +3,29 @@ package ar.com.educacionit.domain;
 import java.util.Date;
 
 public class Articulos implements Entity {
-	
-	//atributos
+
+	// atributos
 	private Long id;
 	private String titulo;
 	private Date fechaCreacion;
 	private String codigo;
 	private Double precio;
-	private Integer stock;
+	private Long stock;
 	private Long marcaId;
-	//private Marcas marca;
+	// private Marcas marca;
 	private Long categoriaId;
 	private Categorias categorias;
-	
-	//constructor 
-	//alt+shift+s
-	
+
+	// constructor
+	// alt+shift+s
+
 	// hacia la db
-	public Articulos(String titulo, Date fechaCreacion, String codigo, Double precio, Integer stock, Long marcaId,
+
+	public Articulos() {
+
+	}
+
+	public Articulos(String titulo, Date fechaCreacion, String codigo, Double precio, Long stock, Long marcaId,
 			Long categoriaId) {
 		this.titulo = titulo;
 		this.fechaCreacion = fechaCreacion;
@@ -30,9 +35,9 @@ public class Articulos implements Entity {
 		this.marcaId = marcaId;
 		this.categoriaId = categoriaId;
 	}
-	
+
 	// desde la db
-	public Articulos(Long id, String titulo, Date fechaCreacion, String codigo, Double precio, Integer stock,
+	public Articulos(Long id, String titulo, Date fechaCreacion, String codigo, Double precio, Long stock,
 			Long marcaId, Long categoriaId) {
 		this.id = id;
 		this.titulo = titulo;
@@ -43,8 +48,7 @@ public class Articulos implements Entity {
 		this.marcaId = marcaId;
 		this.categoriaId = categoriaId;
 	}
-	
-	
+
 	// metodos
 
 	public Articulos(Long id, String titulo, Double precio) {
@@ -56,20 +60,20 @@ public class Articulos implements Entity {
 	public Double getPrecio() {
 		return this.precio;
 	}
-	
+
 	public String getPrecio(String pattern) {
-		//##,###.00
+		// ##,###.00
 		return this.precio.toString();
 	}
 
 	public String getTitulo() {
 		return titulo;
 	}
-	
+
 	public String getTitulo(Boolean isUpperCase) {
 		if (isUpperCase) {
 			return this.titulo.toUpperCase();
-		}else {
+		} else {
 			return this.titulo;
 		}
 	}
@@ -94,11 +98,11 @@ public class Articulos implements Entity {
 		this.codigo = codigo;
 	}
 
-	public Integer getStock() {
+	public Long getStock() {
 		return stock;
 	}
 
-	public void setStock(Integer stock) {
+	public void setStock(Long stock) {
 		this.stock = stock;
 	}
 
@@ -135,7 +139,5 @@ public class Articulos implements Entity {
 				+ ", precio=" + precio + ", stock=" + stock + ", marcaId=" + marcaId + ", categoriaId=" + categoriaId
 				+ "]";
 	}
-	
-	
 
 }

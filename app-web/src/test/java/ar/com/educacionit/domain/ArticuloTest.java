@@ -6,7 +6,7 @@ public class ArticuloTest {
 	
 	public static void main(String[] args) {
 		
-		Articulos miArticulo = new Articulos("titulo1", new Date(), "0001", 2500d, 5, 1l, 1l);
+		Articulos miArticulo = new Articulos("titulo1", new Date(), "0001", 2500D, 5L, 1L, 1L);
 		
 		//f3
 		//alt <-
