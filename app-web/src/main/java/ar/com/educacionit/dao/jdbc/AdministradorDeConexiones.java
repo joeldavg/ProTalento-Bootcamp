@@ -10,7 +10,7 @@ public class AdministradorDeConexiones {
 
 	public static Connection obtenerConexion() throws GenericException {
 		
-		String url = "jdbc:mysql://127.0.0.1:3306/bootcamp-protalento?serverTimezone=UTC&userSSL=false";
+		String url = "jdbc:mysql://127.0.0.1:3306/bootcamp_protalento?serverTimezone=UTC&userSSL=false";
 		String user = "root";
 		String password = "root";
 		String driverName = "com.mysql.cj.jdbc.Driver";
