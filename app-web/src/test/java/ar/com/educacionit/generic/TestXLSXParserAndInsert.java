@@ -21,6 +21,7 @@ public class TestXLSXParserAndInsert {
 			Collection<Articulos> articulos = xlsxParser.parse();
 			for (Articulos articulo : articulos) {
 				articulosService.save(articulo);
+				System.out.println("Se registro con exito en la DB");
 			}
 		} catch (ParseException | ServiceException e) {
 			e.printStackTrace();

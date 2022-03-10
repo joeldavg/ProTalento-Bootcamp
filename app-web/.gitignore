@@ -1,9 +1,4 @@
 /target/
+/bin/
 /.classpath
-<<<<<<< HEAD
-*.settings
-*.project
-=======
-*.project
-.settings
->>>>>>> refs/heads/clase7
+/.project
