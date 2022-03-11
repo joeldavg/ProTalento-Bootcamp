@@ -20,8 +20,8 @@ public class ArticulosDaoImpl extends JdbcDaoBase<Articulos> implements Articulo
 		st.setDate(3, new Date(entity.getFechaCreacion().getTime()));
 		st.setDouble(4, entity.getPrecio());
 		st.setLong(5, entity.getStock());
-		st.setLong(6, entity.getMarcaId());
-		st.setLong(7, entity.getCategoriaId());
+		st.setLong(6, entity.getMarcasId());
+		st.setLong(7, entity.getCategoriasId());
 	}
 
 	@Override
@@ -35,8 +35,8 @@ public class ArticulosDaoImpl extends JdbcDaoBase<Articulos> implements Articulo
 		st.setString(1, entity.getTitulo());
 		st.setDouble(2, entity.getPrecio());
 		st.setLong(3, entity.getStock());
-		st.setLong(4, entity.getMarcaId());
-		st.setLong(5, entity.getCategoriaId());
+		st.setLong(4, entity.getMarcasId());
+		st.setLong(5, entity.getCategoriasId());
 	}
 
 	@Override

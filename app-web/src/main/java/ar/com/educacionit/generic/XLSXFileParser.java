@@ -98,10 +98,10 @@ public class XLSXFileParser extends BaseFile implements IParser<Collection<Artic
 			articulo.setStock((long) celdaActual.getNumericCellValue());
 			break;
 		case 4:
-			articulo.setMarcaId((long) celdaActual.getNumericCellValue());
+			articulo.setMarcasId((long) celdaActual.getNumericCellValue());
 			break;
 		case 5:
-			articulo.setCategoriaId((long) celdaActual.getNumericCellValue());
+			articulo.setCategoriasId((long) celdaActual.getNumericCellValue());
 			break;
 		default:
 			break;

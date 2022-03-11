@@ -11,9 +11,9 @@ public class Articulos implements Entity {
 	private String codigo;
 	private Double precio;
 	private Long stock;
-	private Long marcaId;
+	private Long marcasId;
 	// private Marcas marca;
-	private Long categoriaId;
+	private Long categoriasId;
 	private Categorias categorias;
 
 	// constructor
@@ -25,28 +25,28 @@ public class Articulos implements Entity {
 
 	}
 
-	public Articulos(String titulo, Date fechaCreacion, String codigo, Double precio, Long stock, Long marcaId,
-			Long categoriaId) {
+	public Articulos(String titulo, Date fechaCreacion, String codigo, Double precio, Long stock, Long marcasId,
+			Long categoriasId) {
 		this.titulo = titulo;
 		this.fechaCreacion = fechaCreacion;
 		this.codigo = codigo;
 		this.precio = precio;
 		this.stock = stock;
-		this.marcaId = marcaId;
-		this.categoriaId = categoriaId;
+		this.marcasId = marcasId;
+		this.categoriasId = categoriasId;
 	}
 
 	// desde la db
 	public Articulos(Long id, String titulo, Date fechaCreacion, String codigo, Double precio, Long stock,
-			Long marcaId, Long categoriaId) {
+			Long marcasId, Long categoriasId) {
 		this.id = id;
 		this.titulo = titulo;
 		this.fechaCreacion = fechaCreacion;
 		this.codigo = codigo;
 		this.precio = precio;
 		this.stock = stock;
-		this.marcaId = marcaId;
-		this.categoriaId = categoriaId;
+		this.marcasId = marcasId;
+		this.categoriasId = categoriasId;
 	}
 
 	// metodos
@@ -106,20 +106,20 @@ public class Articulos implements Entity {
 		this.stock = stock;
 	}
 
-	public Long getMarcaId() {
-		return marcaId;
+	public Long getMarcasId() {
+		return marcasId;
 	}
 
-	public void setMarcaId(Long marcaId) {
-		this.marcaId = marcaId;
+	public void setMarcasId(Long marcasId) {
+		this.marcasId = marcasId;
 	}
 
-	public Long getCategoriaId() {
-		return categoriaId;
+	public Long getCategoriasId() {
+		return categoriasId;
 	}
 
-	public void setCategoriaId(Long categoriaId) {
-		this.categoriaId = categoriaId;
+	public void setCategoriasId(Long categoriasId) {
+		this.categoriasId = categoriasId;
 	}
 
 	public Long getId() {
@@ -136,7 +136,7 @@ public class Articulos implements Entity {
 
 	public String toString() {
 		return "Articulo [id=" + id + ", titulo=" + titulo + ", fechaCreacion=" + fechaCreacion + ", codigo=" + codigo
-				+ ", precio=" + precio + ", stock=" + stock + ", marcaId=" + marcaId + ", categoriaId=" + categoriaId
+				+ ", precio=" + precio + ", stock=" + stock + ", marcasId=" + marcasId + ", categoriasId=" + categoriasId
 				+ "]";
 	}
 
