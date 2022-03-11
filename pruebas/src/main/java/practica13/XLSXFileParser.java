@@ -39,38 +39,42 @@ public class XLSXFileParser extends BaseFile implements IParser<Collection<Artic
 		File xlsxFile = new File(super.getPath());
 
 		try (InputStream xlsxInputStream = new FileInputStream(xlsxFile);
+				
 				Workbook workbook = new XSSFWorkbook(xlsxInputStream)) {
-			// clases propia de la libreria
+				// clases propia de la libreria
 
-			Sheet hoja = workbook.getSheetAt(1);
-
-			// collection
-			Iterator<Row> filasDeLaHoja = hoja.iterator();
-
-			boolean primeraFila = true;
-			// TITULO CODIGO PRECIO STOCK ...
-
-			while (filasDeLaHoja.hasNext()) {
-				Row currentRow = filasDeLaHoja.next();
-
-				if (primeraFila) {
-					primeraFila = false;
-					continue;
+				for (int i = 0; i < workbook.getNumberOfSheets(); i++) {
+					Sheet hoja = workbook.getSheetAt(i);
+	
+					// collection
+					Iterator<Row> filasDeLaHoja = hoja.iterator();
+	
+					boolean primeraFila = true;
+					// TITULO CODIGO PRECIO STOCK ...
+	
+					while (filasDeLaHoja.hasNext()) {
+						Row currentRow = filasDeLaHoja.next();
+	
+						if (primeraFila) {
+							primeraFila = false;
+							continue;
+						}
+	
+						Iterator<Cell> celdas = currentRow.iterator();
+	
+						// Articulos
+						Articulos articulo = new Articulos();
+	
+						while (celdas.hasNext()) {
+	
+							fromCellToArticulos(celdas, articulo);
+						}
+	
+						articulos.add(articulo);
+					}
+	
 				}
-
-				Iterator<Cell> celdas = currentRow.iterator();
-
-				// Articulos
-				Articulos articulo = new Articulos();
-
-				while (celdas.hasNext()) {
-
-					fromCellToArticulos(celdas, articulo);
-				}
-
-				articulos.add(articulo);
-			}
-
+			
 		} catch (IOException e) {
 			throw new ParseException("No se pudo parsear el archivo: " + getPath(), e);
 		}
