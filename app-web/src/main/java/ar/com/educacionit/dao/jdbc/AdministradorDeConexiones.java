@@ -10,16 +10,16 @@ public class AdministradorDeConexiones {
 
 	public static Connection obtenerConexion() throws GenericException {
 		
-		String url = "jdbc:mysql://127.0.0.1:3306/bootcamp_protalento?serverTimezone=UTC&userSSL=false";
-		String user = "root";
-		String password = "root";
-		String driverName = "com.mysql.cj.jdbc.Driver";
+		String url = "jdbc:postgresql://ec2-3-222-204-187.compute-1.amazonaws.com:5432/d7p086p6n6ck5a?serverTimezone=UTC&userSSL=false";
+		String user = "uuwihzidjulogs";
+		String password = "dc814724ac7c56adb05df64561878a998d5fcf64e1f2e8c85ad126cb9a2ce972";
+		//String driverName = "com.mysql.cj.jdbc.Driver";
 		
 		try {
-			Class.forName(driverName);
+			//Class.forName(driverName);
 			Connection connection = DriverManager.getConnection(url, user, password);
 			return connection;
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 			throw new GenericException("Error obteniendo conexion: " + e.getMessage(), e);
 		}
 		
