@@ -51,7 +51,7 @@ public class LoginServlet extends HttpServlet {
 			e.printStackTrace();
 			target = ViewEnums.ERROR_GENERAL;
 		}
-		
+		// ir a target
 		getServletContext().getRequestDispatcher(target.getView()).forward(req, resp);
 		
 	}
