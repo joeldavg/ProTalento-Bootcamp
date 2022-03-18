@@ -14,7 +14,7 @@ public class Articulos implements Entity {
 	private Long marcasId;
 	// private Marcas marca;
 	private Long categoriasId;
-	private Categorias categorias;
+	//private Categorias categorias;
 
 	// constructor
 	// alt+shift+s
