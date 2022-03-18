@@ -19,6 +19,7 @@
 		<!-- con un boton adentro -->
 			<input type="submit" value="Pedir listado GET"/>
 		</form>
-		
+		<img src="<%=request.getContextPath()%>/img/Bart_Simpson.webp"/>
+
 	</body>
 </html>
