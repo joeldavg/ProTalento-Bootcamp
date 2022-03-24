@@ -23,11 +23,11 @@ public class CategoriaDaoImpl extends JdbcDaoBase<Categorias> implements Categor
 	}
 
 	@Override
-	public void save(PreparedStatement st, Categorias entity) throws SQLException {
+	public void save(PreparedStatement pst, Categorias entity) throws SQLException {
 		
-		st.setString(1, entity.getDescripcion());
-		st.setString(2, entity.getCodigo());
-		st.setLong(3, entity.getHabilitada());
+		pst.setString(1, entity.getDescripcion());
+		pst.setString(2, entity.getCodigo());
+		pst.setLong(3, entity.getHabilitada());
 	}
 
 	@Override
@@ -39,10 +39,10 @@ public class CategoriaDaoImpl extends JdbcDaoBase<Categorias> implements Categor
 	}
 
 	@Override
-	public void update(PreparedStatement st, Categorias entity) throws SQLException {
+	public void update(PreparedStatement pst, Categorias entity) throws SQLException {
 		// TODO Auto-generated method stub
-		st.setString(1, entity.getDescripcion());
-		st.setLong(2, entity.getHabilitada());
+		pst.setString(1, entity.getDescripcion());
+		pst.setLong(2, entity.getHabilitada());
 	}
 
 }

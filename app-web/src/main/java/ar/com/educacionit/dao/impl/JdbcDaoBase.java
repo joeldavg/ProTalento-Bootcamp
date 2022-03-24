@@ -16,6 +16,7 @@ import ar.com.educacionit.dao.exceptions.GenericException;
 import ar.com.educacionit.dao.jdbc.AdministradorDeConexiones;
 import ar.com.educacionit.dao.jdbc.util.DTOUtils;
 import ar.com.educacionit.domain.Entity;
+import ar.com.educacionit.domain.Users;
 
 /**
  * Las T son entidades que representan tablas, por ende van a deredar de Entity
@@ -23,7 +24,6 @@ import ar.com.educacionit.domain.Entity;
  *
  * @param <T>
  */
-
 
 public abstract class JdbcDaoBase<T extends Entity> implements GenericDao<T>{
 	
@@ -43,28 +43,12 @@ public abstract class JdbcDaoBase<T extends Entity> implements GenericDao<T>{
 			throw new GenericException("Id no informado");
 		}
 
-		T entity = null;
-		
 		String sql = "SELECT * FROM " + this.tabla + " WHERE id = " + id;
-		System.out.println("Ejecutando sql: " + sql);
+		List<T> list = this.findBySQL(sql);
 		
-		//connection
-		try (Connection connection = AdministradorDeConexiones.obtenerConexion()) {
-			
-			try (Statement st = connection.createStatement()) {
-
-				try (ResultSet rs = st.executeQuery(sql)) {
-					
-					List<T> list = DTOUtils.populateDTOs(this.clazz, rs);
-					
-					if (!list.isEmpty()) {
-						entity= list.get(0);
-					}
-					
-				}
-			}
-		} catch (Exception e) {
-			throw new GenericException("No se pudo consultar: " + sql , e);
+		T entity = null;
+		if (!list.isEmpty()) {
+			entity = list.get(0);
 		}
 		
 		return entity;
@@ -92,50 +76,6 @@ public abstract class JdbcDaoBase<T extends Entity> implements GenericDao<T>{
 			throw new GenericException("No se pudo eliminar: " + sql , e);
 		}
 	}
-	
-	/*
-	public T save(T entity) throws DuplicatedException {
-		
-		StringBuffer namesSQL = new StringBuffer("INSERT INTO ").append(this.tabla).append(" (");
-		StringBuffer valueSQLString = new StringBuffer("VALUES (");
-
-		try {
-			T instance = this.clazz.getConstructor().newInstance();
-			
-			//le pido los filds
-			Field[] fields = instance.getClass().getDeclaredFields();
-			
-			for (Field field : fields) {
-				field.setAccessible(true);
-				//socio(id, nombre, apellido, pais_id)
-				//socio(id, nombre, apellido, pais_id)
-				//socio(id, nombre, apellido, paisId)
-				
-				String campoSql = field.getName();
-				Object valueSql = field.get(entity);
-				
-				if (valueSql != null) {
-					namesSQL.append(campoSql).append(",");
-					valueSQLString.append("'").append(valueSql).append("'").append(",");
-				}
-			}
-			
-			namesSQL = new StringBuffer(namesSQL.substring(0, (namesSQL.length()-1) ));
-			namesSQL.append(") ");
-			
-			valueSQLString = new StringBuffer(valueSQLString.substring(0, (valueSQLString.length()-1) ));
-			valueSQLString.append(")");
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		String sqlFinal = namesSQL.toString() + valueSQLString.toString();
-		System.out.println(sqlFinal);
-		
-		return null;
-	}
-	*/
 	
 	public T save(T entity) throws DuplicatedException, GenericException {
 		
@@ -196,24 +136,8 @@ public abstract class JdbcDaoBase<T extends Entity> implements GenericDao<T>{
 	
 	public List<T> findAll() throws GenericException {
 		
-		List<T> list = new ArrayList<>();
 		String sql = "SELECT * FROM " + this.tabla;
-		
-		//connection
-		try (Connection connection = AdministradorDeConexiones.obtenerConexion()) {
-			
-			try (Statement st = connection.createStatement()) {
-
-				try (ResultSet rs = st.executeQuery(sql)) {
-					
-					list = DTOUtils.populateDTOs(this.clazz, rs);
-					
-				}
-			}
-		} catch (Exception e) {
-			throw new GenericException("No se pudo consultar: " + sql , e);
-		}
-		
+		List<T> list = this.findBySQL(sql);
 		
 		return list;
 	}
@@ -225,5 +149,26 @@ public abstract class JdbcDaoBase<T extends Entity> implements GenericDao<T>{
 	public abstract void update(PreparedStatement st, T entity) throws SQLException;
 
 	public abstract String getUpdateSQL();
+	
+	public List<T> findBySQL(String sql) throws GenericException {
+		
+		List<T> entity = new ArrayList<>();
+		
+		// connection
+		try (Connection connection = AdministradorDeConexiones.obtenerConexion()) {
+
+			try (Statement st = connection.createStatement()) {
+
+				try (ResultSet rs = st.executeQuery(sql)) {
+
+					entity = DTOUtils.populateDTOs(this.clazz, rs);
+				}
+			}
+		} catch (Exception e) {
+			throw new GenericException("No se pudo consultar: " + sql, e);
+		}
+
+		return entity;
+	}
 	
 }

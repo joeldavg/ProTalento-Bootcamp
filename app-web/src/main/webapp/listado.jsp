@@ -9,13 +9,11 @@
 	<body>
 		<!-- quiero capturar el listado que envio el servlet bajo el nombre LISTADO -->
 	
-		<% // SCRIPTLET -> PERMITE ESCRIBIR CODIGO JAVA
+		<%  // SCRIPTLET -> PERMITE ESCRIBIR CODIGO JAVA
 			// dentro de las jsp tengo un "objeto implicito" llamado request
 			
 			//primero
-			Object listadoObject = request.getAttribute("LISTADO");
-			// puedo castear de Object a List<Articulos>
-			List<Articulos> listado = (List<Articulos>) listadoObject;
+			List<Articulos> listado = (List<Articulos>) request.getAttribute("listado");
 		%>
 		
 		<%
@@ -24,7 +22,7 @@
 				
 		%>
 			<!-- puedo poner html puro y usar el objecto art -->
-			<p><%=art.getCodigo() %></p>
+			<p><%=art.toString()%></p>
 		<%
 			}
 		%>

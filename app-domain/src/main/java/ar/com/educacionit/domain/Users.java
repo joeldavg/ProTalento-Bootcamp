@@ -5,8 +5,10 @@ public class Users {
 	private Long id;
 	private String username;
 	private String password;
-	
 	private Socios socio;
+	
+	public Users() {
+	}
 
 	public Users(Long id, String username, String password) {
 		this.id = id;

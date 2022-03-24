@@ -14,14 +14,14 @@ public class ArticulosDaoImpl extends JdbcDaoBase<Articulos> implements Articulo
 	}
 
 	@Override
-	public void save(PreparedStatement st, Articulos entity) throws SQLException {
-		st.setString(1, entity.getTitulo());
-		st.setString(2, entity.getCodigo());
-		st.setDate(3, new Date(entity.getFechaCreacion().getTime()));
-		st.setDouble(4, entity.getPrecio());
-		st.setLong(5, entity.getStock());
-		st.setLong(6, entity.getMarcasId());
-		st.setLong(7, entity.getCategoriasId());
+	public void save(PreparedStatement pst, Articulos entity) throws SQLException {
+		pst.setString(1, entity.getTitulo());
+		pst.setString(2, entity.getCodigo());
+		pst.setDate(3, new Date(entity.getFechaCreacion().getTime()));
+		pst.setDouble(4, entity.getPrecio());
+		pst.setLong(5, entity.getStock());
+		pst.setLong(6, entity.getMarcasId());
+		pst.setLong(7, entity.getCategoriasId());
 	}
 
 	@Override
@@ -31,12 +31,12 @@ public class ArticulosDaoImpl extends JdbcDaoBase<Articulos> implements Articulo
 	}
 
 	@Override
-	public void update(PreparedStatement st, Articulos entity) throws SQLException {
-		st.setString(1, entity.getTitulo());
-		st.setDouble(2, entity.getPrecio());
-		st.setLong(3, entity.getStock());
-		st.setLong(4, entity.getMarcasId());
-		st.setLong(5, entity.getCategoriasId());
+	public void update(PreparedStatement pst, Articulos entity) throws SQLException {
+		pst.setString(1, entity.getTitulo());
+		pst.setDouble(2, entity.getPrecio());
+		pst.setLong(3, entity.getStock());
+		pst.setLong(4, entity.getMarcasId());
+		pst.setLong(5, entity.getCategoriasId());
 	}
 
 	@Override
