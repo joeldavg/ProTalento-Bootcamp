@@ -1,0 +1,35 @@
+/*aplica a todas las etiquetas input*/
+input {
+	color: red;
+}
+
+/*
+ul li a {
+	color: fuchsia;
+	text-decoration: none;
+	text-transform: uppercase;
+}*/
+ul li {
+	list-style: none;
+}
+
+/*esto es una clase*/
+.navDefault {
+	color: green;
+}
+
+.navDefault li a {
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+/*Aplico solo al id secLogin un fondo amarillo*/
+#secLogin {
+	background-color: gray;
+}
+
+/*estilos de tablas border*/
+.tabla {
+	/*border: 1px thin solid;*/
+	background-color: gray;
+}
