@@ -1,13 +1,8 @@
-<%@page import="ar.com.educacionit.web.enums.ViewKeysEnums"%>
-<%@page import="ar.com.educacionit.domain.Users"%> 
-<% 
-	//objetos implicitos que tiene las jsp 
-	Users user = (Users) session.getAttribute(ViewKeysEnums.USER.getParam());
-%>
+<!-- HTML5 -->
 <!DOCTYPE html>
+<%@page import="ar.com.educacionit.web.enums.ViewKeysEnums"%>
 <html lang="es">
 	<head>
-		<!-- CSS ONLY -->
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<jsp:include page="styles.jsp"></jsp:include>
@@ -15,21 +10,22 @@
 	
 	<body>
 	  <header>
-	  	<!-- Mostrar navbar -->
 	  	<jsp:include page="navbar.jsp"></jsp:include>
 	  </header>
 	
 	  <main>
 	   	<div class="container">
-	   		<!-- Mostrar mensajeria	 -->
 	   		<jsp:include page="mensajeria.jsp"></jsp:include>
 	   		<div class="row d-flex justify-content-center">
+	   			<h1>Cargar Archivo</h1>
 	   			<div class="col-6">
-		   			<h1>Username: <%=user.getUsername()%> </h1>
-					<h2>Nombre: <%=user.getSocio().getNombre()%> </h2>
-					<h3>Apellido: <%=user.getSocio().getApellido()%> </h3>
-					
-					<a href="<%=request.getContextPath()%>/BuscarProductosServlet">Ver Listado</a>
+	   				<form action="<%=request.getContextPath()%>/UploadFileServlet" method="post" enctype="multipart/formdata">
+			   			<div class="mb-3">
+						  <label for="formFile" class="form-label">Cargar Archivo</label>
+						  <input class="form-control" name="<%=ViewKeysEnums.UPLOAD_FILE.getParam()%>" type="file" id="formFile">
+						</div>
+						<button type="submit" class="btn btn-primary">Cargar Archivo</button>
+	   				</form>
 	   			</div>
 	   		</div>
 	  	</div>
