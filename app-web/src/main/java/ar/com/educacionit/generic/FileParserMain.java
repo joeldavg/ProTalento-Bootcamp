@@ -1,5 +1,6 @@
 package ar.com.educacionit.generic;
 
+import java.io.IOException;
 import java.util.Collection;
 
 import ar.com.educacionit.domain.Articulos;
@@ -22,7 +23,7 @@ public class FileParserMain {
 				System.out.println(articulo);
 				precioTotal += articulo.getPrecio();
 			}
-		} catch (ParseException e) {
+		} catch (ParseException | IOException e) {
 			e.printStackTrace();
 		}
 		

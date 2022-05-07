@@ -4,63 +4,86 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
+
+import javax.servlet.http.Part;
 
 import ar.com.educacionit.domain.Articulos;
 
 public class CSVFileParser extends BaseFile implements IParser<Collection<Articulos>> {
 
+	public CSVFileParser(Part filePart) {
+		super(filePart);
+	}
+
 	public CSVFileParser(String path) {
 		super(path);
 	}
 
-	@Override
-	public Collection<Articulos> parse() throws ParseException {
-		
-		//Crear lista vacia de articulos
+	public Collection<Articulos> parse() throws ParseException, IOException {
+
+		InputStream is = null;
+		BufferedReader br = null;
+		FileReader fileReader = null;
+
+		try {
+			// detectar si tiene path como String o Part
+			if (this.filePart != null) {
+				is = filePart.getInputStream();
+				br = new BufferedReader(new InputStreamReader(is));
+			} else {
+				File file = new File(super.getFilePath());
+
+				if (!file.exists()) {
+					throw new ParseException("No existe el archivo: " + super.getFilePath());
+				}
+				fileReader = new FileReader(file);
+				br = new BufferedReader(fileReader);
+			}
+
+			return buildArchivos(br);
+
+		} catch (Exception e) {
+			throw new ParseException(e);
+		} finally {
+			br.close();
+		}
+
+	}
+
+	private Collection<Articulos> buildArchivos(BufferedReader br) throws IOException {
+
 		Collection<Articulos> articulos = new ArrayList<>();
 		
-		//ACA VA LA LOGICA DE LECTURA DEL FILE
-		File file = new File(super.getPath());
+		// leer la primera linea y la descarto
+		String lineaLeida = br.readLine();
+		// vuelvo a leer para tomar los "registros"
+		lineaLeida = br.readLine();
 		
-		// VERIFICO SI EL FILE EXISTE
-		if (!file.exists()) {
-			//negocio
-			throw new ParseException("No existe el archivo: " + super.getPath());
-		}
-		
-		try (FileReader fileReader = new FileReader(file)) {
+		Date fechaCreacion = new Date();
+		while (lineaLeida != null) {
+			// titulo;codigo;precio;stock;categoria;marca;
+			String[] datos = lineaLeida.split(";");
 
-			try (BufferedReader br = new BufferedReader(fileReader)) {
-			
-				// leer la primera linea y la descarto
-				String lineaLeida = br.readLine();
-				
-				// vuelvo a leer para tomar los "registros"
-				lineaLeida = br.readLine();
-				
-				while (lineaLeida != null) {
-					//1;monitor 17;25000
-					String[] datos = lineaLeida.split(";");
-					String id = datos[0]; 	  // -> id
-					String titulo = datos[1]; // -> titulo
-					String precio = datos[2]; // -> precio
-					
-					//creo constructor
-					
-					Articulos unArticulo = new Articulos(Long.parseLong(id), titulo, Double.parseDouble(precio));
-					
-					articulos.add(unArticulo);
-					
-					lineaLeida = br.readLine();
-				}
-			}
-			
-		} catch (IOException e) {
-			throw new ParseException(e.getMessage(), e);
+			String titulo = datos[0];
+			String codigo = datos[1];
+			Double precio = Double.parseDouble(datos[2]);
+			Long stock = Long.parseLong(datos[3]);
+			Long categoriaId = Long.parseLong(datos[4]);
+			Long marcaId = Long.parseLong(datos[5]);
+
+			// creo constructor
+			Articulos unArticulo = new Articulos(titulo, fechaCreacion, codigo, precio, stock, marcaId, categoriaId);
+
+			articulos.add(unArticulo);
+
+			lineaLeida = br.readLine();
 		}
-		
+
 		return articulos;
 	}
 

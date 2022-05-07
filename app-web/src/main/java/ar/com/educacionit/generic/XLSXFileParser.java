@@ -10,6 +10,8 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 
+import javax.servlet.http.Part;
+
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -19,6 +21,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import ar.com.educacionit.domain.Articulos;
 
 public class XLSXFileParser extends BaseFile implements IParser<Collection<Articulos>> {
+
+	public XLSXFileParser(Part filePart) {
+		super(filePart);
+	}
 
 	public XLSXFileParser(String path) {
 		super(path);
@@ -31,7 +37,7 @@ public class XLSXFileParser extends BaseFile implements IParser<Collection<Artic
 		//libreria poi de apache
 		
 		//leer un binario
-		File xlsxFile = new File(super.getPath());
+		File xlsxFile = new File(super.getFilePath());
 		
 		try (
 				InputStream xlsxInputStream = new FileInputStream(xlsxFile);
@@ -69,7 +75,7 @@ public class XLSXFileParser extends BaseFile implements IParser<Collection<Artic
 			}
 			
 		} catch (IOException e) {
-			throw new ParseException("No se pudo parsear el archivo: " + getPath(), e);
+			throw new ParseException("No se pudo parsear el archivo: " + getFilePath(), e);
 		}
 		
 		return articulos;

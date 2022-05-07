@@ -1,18 +1,35 @@
 package ar.com.educacionit.generic;
 
+import javax.servlet.http.Part;
+
 public abstract class BaseFile {
 	
-	private String path;
+	protected String filePath;
+	
+	protected Part filePart;
 
-	public BaseFile(String path) {
-		if (path == null) {
+	public BaseFile(String filePath) {
+		if (filePath == null) {
 			throw new IllegalArgumentException("Debe indicar un path de archivo");
 		}
-		this.path = path;
+		this.filePath = filePath;
 	}
 
-	public String getPath() {
-		return path;
+	
+	public BaseFile(Part filePart) {
+		if (filePart == null) {
+			throw new IllegalArgumentException("Debe ingresar un Part valido");
+		}
+		this.filePart = filePart;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+
+	public Part getFilePart() {
+		return filePart;
 	}
 	
 }

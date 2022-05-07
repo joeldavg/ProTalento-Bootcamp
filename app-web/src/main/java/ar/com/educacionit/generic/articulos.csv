@@ -1,3 +1,3 @@
-id;titulo;precio
-1;monitor 17;2500
-2;parlante;1500
+titulo;codigo;precio;stock;categoria;marca;
+titulo1;tit000;1500;5;1;1;
+titulo2;tit002;2200;3;1;1;

@@ -15,7 +15,7 @@ import ar.com.educacionit.services.ArticulosService;
 import ar.com.educacionit.services.exceptions.ServiceException;
 import ar.com.educacionit.services.impl.ArticulosServiceImpl;
 
-@WebServlet("/BuscarProductosServlet")
+@WebServlet("/controllers/BuscarProductosServlet")
 public class BuscarProductosServlet extends HttpServlet {
 	
 	@Override
