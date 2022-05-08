@@ -10,10 +10,7 @@
 	</head>
 	
 	<body>
-	  <header>
-	  	<!-- Mostrar navbar -->
 	  	<jsp:include page="navbar.jsp"></jsp:include>
-	  </header>
 	
 	  <main>
 	   	<div class="container">

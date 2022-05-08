@@ -24,7 +24,7 @@ public class CSVFileParser extends BaseFile implements IParser<Collection<Articu
 		super(path);
 	}
 
-	public Collection<Articulos> parse() throws ParseException, IOException {
+	public Collection<Articulos> parse() throws ParseException {
 
 		InputStream is = null;
 		BufferedReader br = null;
@@ -50,7 +50,11 @@ public class CSVFileParser extends BaseFile implements IParser<Collection<Articu
 		} catch (Exception e) {
 			throw new ParseException(e);
 		} finally {
-			br.close();
+			try {
+				br.close();
+			} catch (IOException e) {
+				throw new ParseException(e);
+			}
 		}
 
 	}

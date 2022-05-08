@@ -14,10 +14,7 @@
 	</head>
 	
 	<body>
-	  <header>
-	  	<!-- Mostrar navbar -->
-	  	<jsp:include page="navbar.jsp"></jsp:include>
-	  </header>
+		<jsp:include page="navbar.jsp"></jsp:include>
 	
 	  <main>
 	   	<div class="container">

@@ -8,7 +8,9 @@ public enum ViewKeysEnums {
 	USUARIO_PASSWORD_INVALIDO("usuario/password incorrectos"), 
 	USER("user"),
 	UPLOAD_FILE("uploadfile"),
-	UPLOAD_PREVIEW_KEY("upload_preview_key");
+	UPLOAD_PREVIEW_KEY("upload_preview_key"), 
+	ARTICULOS_FAILS("articulos_fails"), 
+	ARTICULOS_OKS("articulos_oks");
 	
 	private String param;
 
@@ -20,7 +22,4 @@ public enum ViewKeysEnums {
 		return param;
 	}
 
-	public void setParam(String param) {
-		this.param = param;
-	}
 }

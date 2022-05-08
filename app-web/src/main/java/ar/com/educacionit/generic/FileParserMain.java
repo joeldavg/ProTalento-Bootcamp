@@ -23,7 +23,7 @@ public class FileParserMain {
 				System.out.println(articulo);
 				precioTotal += articulo.getPrecio();
 			}
-		} catch (ParseException | IOException e) {
+		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		

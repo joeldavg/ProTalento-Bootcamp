@@ -11,14 +11,10 @@
 	
 		<main>
 		 	<div class="container">
-				<div class="row">
+				<div class="row d-flex justify-content-center">
 		 			<jsp:include page="mensajeria.jsp"></jsp:include>
-		 			<h2 class="text-primary">Archivos a Procesar</h2>
-		 			<jsp:include page="./components/tablaArticulosPreview.jsp"></jsp:include>
-					<div class="col">
-						<a class="btn btn-primary" href="<%=request.getContextPath()%>/controllers/CargarProductosServlet" role="button">Guardar</a>
-					</div>
-				</div>
+					<jsp:include page="./components/tablaArticulosPreviewResultados.jsp"></jsp:include>
+		 		</div>
 			</div>
 		</main>
 	  <jsp:include page="scripts.jsp"></jsp:include>

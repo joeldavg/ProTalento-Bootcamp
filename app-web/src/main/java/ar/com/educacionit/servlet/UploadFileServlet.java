@@ -30,7 +30,14 @@ public class UploadFileServlet extends BaseServlet {
 		Part filePart = req.getPart(ViewKeysEnums.UPLOAD_FILE.getParam());
 		
 		ViewEnums target = ViewEnums.UPLOAD_PREVIEW;
-		if (filePart.getSize() > 0) {
+		
+		if (filePart == null || filePart.getSize() == 0) {
+			target = ViewEnums.UPLOAD;
+			super.addAttribute(req, ViewKeysEnums.ERROR_GENERAL, "Debe selecinar un archivo");
+			super.redirect(target, req, resp);
+		}
+		
+		if (filePart != null && filePart.getSize() > 0) {
 			
 			String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
 			
@@ -52,7 +59,7 @@ public class UploadFileServlet extends BaseServlet {
 			if (parser != null) {
 				try {
 					Collection<Articulos> articulos = parser.parse();
-					super.addAttribute(req, ViewKeysEnums.UPLOAD_PREVIEW_KEY, articulos);
+					super.addAttribute(req.getSession(), ViewKeysEnums.UPLOAD_PREVIEW_KEY, articulos);
 				} catch (ParseException e) {
 					super.addAttribute(req, ViewKeysEnums.ERROR_GENERAL, e.getMessage());
 					target = ViewEnums.UPLOAD;
