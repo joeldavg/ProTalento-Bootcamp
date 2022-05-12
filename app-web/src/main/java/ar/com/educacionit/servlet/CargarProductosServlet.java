@@ -32,6 +32,7 @@ public class CargarProductosServlet extends BaseServlet {
 		if (articulosPreview == null || articulosPreview.isEmpty()) {
 			req.setAttribute(ViewKeysEnums.ERROR_GENERAL.getParam(), "No hay datos a procesar");
 			super.redirect(ViewEnums.UPLOAD_PREVIEW, req, resp);
+			return;
 		}
 
 		ArticulosService articulosService = new ArticulosServiceImpl();

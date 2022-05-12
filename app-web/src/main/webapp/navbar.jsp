@@ -20,8 +20,13 @@
 		          <a class="nav-link" href="#">Nuevo Producto</a>
 		        </li>
 		      </ul>
-		      <form class="d-flex">
-		        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+		      <form class="d-flex" action="<%=request.getContextPath()%>/controllers/BuscarProductosServlet">
+		        <input 
+		        name="<%=ViewKeysEnums.CLAVE_BUSQUEDA.getParam() %>" 
+		        class="form-control me-2" 
+		        type="search" 
+		        placeholder="Search" 
+		        aria-label="Search">
 		        <button class="btn btn-outline-success me-2" type="submit">Search</button>
 		      </form>
 		      <a class="btn btn-danger" href="<%=request.getContextPath()%>/LogoutServlet" role="button">Logout</a>

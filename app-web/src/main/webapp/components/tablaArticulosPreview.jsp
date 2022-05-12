@@ -4,6 +4,8 @@
 <%
 	Collection<Articulos> articulos = (Collection<Articulos>) session.getAttribute(ViewKeysEnums.UPLOAD_PREVIEW_KEY.getParam());
 %>
+
+<% if(articulos != null && !articulos.isEmpty() ) { %>
 <table class="table table-striped table-hover">
   <thead>
     <tr>
@@ -16,8 +18,7 @@
     </tr>
   </thead>
   <tbody>
-  <% if(articulos != null || articulos.isEmpty() ) { 
-	  for(Articulos articulo : articulos) { %>
+	 <% for(Articulos articulo : articulos) { %>
 	    <tr>
 	      <td><%=articulo.getTitulo() %></td>
 	      <td><%=articulo.getCodigo() %></td>
@@ -26,7 +27,7 @@
 	      <td><%=articulo.getMarcasId() %></td>
 	      <td><%=articulo.getCategoriasId() %></td>
 	    </tr>
-   	<% } 
-	}%>
+   	<% } %>
   </tbody>
 </table>
+<% } %>

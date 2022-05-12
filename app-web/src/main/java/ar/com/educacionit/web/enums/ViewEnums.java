@@ -8,7 +8,8 @@ public enum ViewEnums {
 	ERROR_GENERAL("/loginError.jsp"), 
 	UPLOAD_PREVIEW("/uploadPreview.jsp"), 
 	UPLOAD("/upload.jsp"), 
-	RESULTADO_PREVIEW("/resultadoPreview.jsp");
+	RESULTADO_PREVIEW("/resultadoPreview.jsp"), 
+	LISTADO_GENERAL("/listadoGeneral.jsp");
 	
 	private String param;
 

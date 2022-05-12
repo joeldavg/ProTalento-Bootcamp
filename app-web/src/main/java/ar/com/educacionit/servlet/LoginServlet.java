@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import ar.com.educacionit.domain.Users;
+import ar.com.educacionit.dto.LoginDTO;
 import ar.com.educacionit.services.LoginService;
 import ar.com.educacionit.services.exceptions.ServiceException;
 import ar.com.educacionit.services.impl.LoginServiceImpl;
@@ -17,24 +20,28 @@ import ar.com.educacionit.web.enums.ViewEnums;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
+	
+	private ObjectMapper objectMapper = new ObjectMapper();
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// capturo los parametros enviados por el html/jsp
-		String usernameFromHtml = req.getParameter(ViewKeysEnums.USERNAME.getParam());
-		String passwordFromHtml = req.getParameter(ViewKeysEnums.PASSWORD.getParam());
 
+		//viene el JSON desde la jsp
+		String data = req.getParameter("data");
+		
+		LoginDTO loginDTO = objectMapper.readValue(data, LoginDTO.class);
+		
 		ViewEnums target = ViewEnums.LOGIN_SUCCESS;
 
 		// VALIDACIONES
-		if (isValid(usernameFromHtml, passwordFromHtml)) {
+		if (isValid(loginDTO.getUsername(), loginDTO.getPassword())) {
 
 			// LOGIN SERVICE
 			LoginService loginService = new LoginServiceImpl();
 
 			Users user;
 			try {
-				user = loginService.getUserByUsernameAndPassword(usernameFromHtml, passwordFromHtml);
+				user = loginService.getUserByUsernameAndPassword(loginDTO.getUsername(), loginDTO.getPassword());
 
 				if (user != null) {
 					// seccion

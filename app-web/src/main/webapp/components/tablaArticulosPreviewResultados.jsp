@@ -62,9 +62,18 @@
 </table>
    	<% }%>
 
-  
 <div class="col">
-	<a class="btn btn-primary" href="<%=request.getContextPath()%>/controllers/CargarProductosServlet" role="button">
-		Generar Archivo de Errores
-	</a>
+	<div class="input-group mb-3">
+		<form action="<%=request.getContextPath()%>/controllers/GenerarArchivoErrorServlet" method="post" target="_mew">
+			<select name="<%=ViewKeysEnums.FORMATO.getParam()%>" class="form-select" aria-label="Default select example">
+			  <option value="csv" selected>CSV</option>
+			  <option value="xls">XLS</option>
+			  <option value="pdf">PDF</option>
+			</select>
+<%-- 			<a class="btn btn-primary" href="<%=request.getContextPath()%>/controllers/GenerarArchivoErrorServlet" role="button"> --%>
+<!-- 				Generar Archivo de Errores -->
+<!-- 			</a> -->
+			<button class="btn btn-primary">Generar Archivo de Errores</button>
+		</form>
+	</div>
 </div>

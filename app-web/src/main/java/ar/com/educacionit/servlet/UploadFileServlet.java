@@ -31,48 +31,45 @@ public class UploadFileServlet extends BaseServlet {
 		
 		ViewEnums target = ViewEnums.UPLOAD_PREVIEW;
 		
-		if (filePart == null || filePart.getSize() == 0) {
+		if (filePart == null | filePart.getSize() == 0) {
 			target = ViewEnums.UPLOAD;
 			super.addAttribute(req, ViewKeysEnums.ERROR_GENERAL, "Debe selecinar un archivo");
 			super.redirect(target, req, resp);
+			return;
 		}
 		
-		if (filePart != null && filePart.getSize() > 0) {
-			
-			String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-			
-			String ext = this.getExt(fileName);
-			
-			IParser<Collection<Articulos>> parser;
-			switch (ext) {
-			case "csv":
-				parser = new CSVFileParser(filePart);
-				break;
-			case "xls":
-				parser = new XLSXFileParser(ext);
-				break;
-			default:
-				parser = null;
-				break;
-			}
-			
-			if (parser != null) {
-				try {
-					Collection<Articulos> articulos = parser.parse();
-					super.addAttribute(req.getSession(), ViewKeysEnums.UPLOAD_PREVIEW_KEY, articulos);
-				} catch (ParseException e) {
-					super.addAttribute(req, ViewKeysEnums.ERROR_GENERAL, e.getMessage());
-					target = ViewEnums.UPLOAD;
-				}
-			} else {
-				target = ViewEnums.UPLOAD;
-				super.addAttribute(req, ViewKeysEnums.ERROR_GENERAL, "Formato no soportado");
-			}
-			
-			// TODOS LOS SERVLET PROBRAN USAR ESTE METODO DEL PADRE
-			super.redirect(target, req, resp);
-			
+		String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+		String ext = this.getExt(fileName);
+		
+		IParser<Collection<Articulos>> parser;
+		switch (ext) {
+		case "csv":
+			parser = new CSVFileParser(filePart);
+			break;
+		case "xls":
+			parser = new XLSXFileParser(ext);
+			break;
+		default:
+			parser = null;
+			break;
 		}
+		
+		if (parser != null) {
+			try {
+				Collection<Articulos> articulos = parser.parse();
+				super.addAttribute(req.getSession(), ViewKeysEnums.UPLOAD_PREVIEW_KEY, articulos);
+			} catch (ParseException e) {
+				super.addAttribute(req, ViewKeysEnums.ERROR_GENERAL, e.getMessage());
+				target = ViewEnums.UPLOAD;
+			}
+		} else {
+			target = ViewEnums.UPLOAD;
+			super.addAttribute(req, ViewKeysEnums.ERROR_GENERAL, "Formato no soportado");
+		}
+		
+		// TODOS LOS SERVLET PROBRAN USAR ESTE METODO DEL PADRE
+		super.redirect(target, req, resp);
+			
 	}
 
 	private String getExt(String fileName) {

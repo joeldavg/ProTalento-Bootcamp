@@ -7,6 +7,25 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<jsp:include page="styles.jsp"></jsp:include>
+		
+		<script>
+			
+			function sendForm() {
+				
+				const form = document.forms[0];
+				
+				const loginObject = {
+				}
+				loginObject.username = document.getElementById('exampleInputEmail1').value
+				loginObject.password = document.getElementById('exampleInputPassword1').value
+				
+				document.getElementById('data').value = JSON.stringify(loginObject)
+				
+				form.submit()
+				
+			}
+		</script>
+		
 	</head>
 	
 	<body>
@@ -19,6 +38,7 @@
 	   		<div class="row d-flex justify-content-center">
 	   			<div class="col-6">
 		   			<form action="<%=request.getContextPath()%>/LoginServlet" method="post">
+		   				<input type="hidden" id="data" name="data" />
 					  <div class="mb-3">
 					    <label for="exampleInputEmail1" class="form-label">Username</label>
 					    <input type="text" name="<%=ViewKeysEnums.USERNAME.getParam()%>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -27,7 +47,7 @@
 					    <label for="exampleInputPassword1" class="form-label">Password</label>
 					    <input type="password" name="<%=ViewKeysEnums.PASSWORD.getParam()%>" class="form-control" id="exampleInputPassword1">
 					  </div>
-					  <button type="submit" class="btn btn-primary">Login</button>
+					  <button type="button" onclick="sendForm()" class="btn btn-primary">Login</button>
 					</form>
 	   			</div>
 	   		</div>
