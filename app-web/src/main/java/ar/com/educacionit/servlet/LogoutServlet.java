@@ -20,7 +20,7 @@ public class LogoutServlet extends HttpServlet {
 		req.getSession().invalidate();
 		
 		//redirect a /
-		resp.sendRedirect(getServletContext().getContextPath());
+		req.getRequestDispatcher(getServletContext().getContextPath()).forward(req, resp);
 		
 	}
 
