@@ -19,10 +19,10 @@ public class AdministradorDeConexiones {
 //		String driverName = "org.postgresql.Driver";
 //		// String driverName = "com.mysql.cj.jdbc.Driver";
 		
-		String url = System.getenv("DATABASE_URL");;
 		String user = System.getenv("SPRING_DATASOURCE_USERNAME"); 
 		String password = System.getenv("SPRING_DATASOURCE_PASSWORD"); 
 		String driverName = System.getenv("SPRING_DATASOURCE_DRIVER");
+		String url = System.getenv("SPRING_DATASOURCE_URL");;
 		
 
 		try {
