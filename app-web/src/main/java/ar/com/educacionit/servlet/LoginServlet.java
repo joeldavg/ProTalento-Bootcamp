@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	private boolean isValid(String usernameFromHtml, String passwordFromHtml) {
-		return (usernameFromHtml != null && !usernameFromHtml.isBlank())
-				&& (passwordFromHtml != null && !passwordFromHtml.isBlank());
+		return (usernameFromHtml != null && !usernameFromHtml.isEmpty())
+				&& (passwordFromHtml != null && !passwordFromHtml.isEmpty());
 	}
 }
