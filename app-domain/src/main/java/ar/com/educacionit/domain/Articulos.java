@@ -12,14 +12,9 @@ public class Articulos implements Entity {
 	private Double precio;
 	private Long stock;
 	private Long marcasId;
-	// private Marcas marca;
+	private Marcas marca;
 	private Long categoriasId;
-	//private Categorias categorias;
-
-	// constructor
-	// alt+shift+s
-
-	// hacia la db
+	private Categorias categorias;
 
 	public Articulos() {
 
@@ -132,6 +127,22 @@ public class Articulos implements Entity {
 
 	public void setPrecio(Double precio) {
 		this.precio = precio;
+	}
+	
+	public Marcas getMarca() {
+		return marca;
+	}
+
+	public void setMarca(Marcas marca) {
+		this.marca = marca;
+	}
+	
+	public Categorias getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(Categorias categorias) {
+		this.categorias = categorias;
 	}
 
 	public String toString() {

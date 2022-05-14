@@ -34,7 +34,7 @@ public class BuscarProductosServlet extends HttpServlet {
 //			//pero, debo filtrar por la clave
 //			listado.stream().filter(articulo -> articulo.getTitulo().contains(claveBusqueda));
 			
-			listado = articulosService.findAllByTitle(claveBusqueda);
+			listado = articulosService.findByTitle(claveBusqueda);
 			
 			Double total = listado.stream()
 				.map(x -> x.getPrecio())

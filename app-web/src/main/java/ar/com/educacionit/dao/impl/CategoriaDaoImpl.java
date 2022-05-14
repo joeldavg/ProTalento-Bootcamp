@@ -47,10 +47,4 @@ public class CategoriaDaoImpl extends JdbcDaoBase<Categorias> implements Categor
 		pst.setLong(2, entity.getHabilitada());
 	}
 
-	@Override
-	public List<Categorias> findByTitle(String sql) throws GenericException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
