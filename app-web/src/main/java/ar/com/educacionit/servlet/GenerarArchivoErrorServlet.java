@@ -21,57 +21,59 @@ import ar.com.educacionit.web.enums.ViewKeysEnums;
 public class GenerarArchivoErrorServlet extends HttpServlet {
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		super.doGet(req, resp);
-		
+
 		Collection<Articulos> articulosPreview = (Collection<Articulos>) req.getSession()
 				.getAttribute(ViewKeysEnums.ARTICULOS_FAILS.getParam());
-		
-		//validaciones
-		
+
+		// validaciones
+
 		if (articulosPreview != null && !articulosPreview.isEmpty()) {
-			
+
 			String fileName = "listado-productos-error";
-			
+
 			String format = req.getParameter(ViewKeysEnums.FORMATO.getParam());
-			
+
 			// c:/desarrollo/educacionit/bootcamp
 			String path = File.separator + "desarrollo" + File.separator + fileName + "." + format;
-			
+
 			File outputFile = new File(path);
-			
+
 			if (!outputFile.exists()) {
 				Files.createFile(outputFile.toPath());
 			}
-			
+
 			FileWriter fr = new FileWriter(outputFile);
-			
+
 			for (Articulos articulo : articulosPreview) {
 				String lineFromArticulo = this.lineFromArticulo(articulo);
 				fr.write(lineFromArticulo);
 			}
-			
+
 			fr.close();
-			
-			//logica para descargar el archivo
+
+			// logica para descargar el archivo
 			// y que el navegar entienda que es un file
 			descargar(fileName, format, outputFile, resp);
+		} else {
+
+			req.setAttribute(ViewKeysEnums.ERROR_GENERAL.getParam(), "Sin datos ....");
+			getServletContext().getRequestDispatcher(ViewEnums.RESULTADO_PREVIEW.getParam()).forward(req, resp);
+			// resp.getWriter().print("No se ha podido generar el archivo: ");
 		}
-		
-		req.setAttribute(ViewKeysEnums.ERROR_GENERAL.getParam(), "Sin datos ....");
-		//getServletContext().getRequestDispatcher(ViewEnums.RESULTADO_PREVIEW.getParam()).forward(req, resp);
-		resp.getWriter().print("No se ha podido generar el archivo: ");
-		
+
 	}
 
-	private void descargar(String fileName, String format, File outputFile, HttpServletResponse resp) throws IOException {
-		
-		resp.setContentType("text/csc");
-		
+	private void descargar(String fileName, String format, File outputFile, HttpServletResponse resp)
+			throws IOException {
+
+		resp.setContentType("text/csv");
+
 		String finalName = fileName + "." + format;
-		
-		resp.setHeader("Content-Disposition", "attachment; filename=\"" + finalName);
-		
+
+		resp.setHeader("Content-Disposition", "attachment; filename=\"" + finalName + "\"");
+
 		try {
 			OutputStream out = resp.getOutputStream();
 			byte[] bytes = Files.readAllBytes(outputFile.toPath());
@@ -81,7 +83,7 @@ public class GenerarArchivoErrorServlet extends HttpServlet {
 		} catch (Exception e) {
 			resp.getWriter().print("No se ha podido generar el archivo: " + finalName);
 		}
-		
+
 	}
 
 	private String lineFromArticulo(Articulos articulo) {

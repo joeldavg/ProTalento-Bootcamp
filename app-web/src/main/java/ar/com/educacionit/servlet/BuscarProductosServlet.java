@@ -34,9 +34,14 @@ public class BuscarProductosServlet extends HttpServlet {
 //			//pero, debo filtrar por la clave
 //			listado.stream().filter(articulo -> articulo.getTitulo().contains(claveBusqueda));
 			
-			listado = articulosService.findAllBy(claveBusqueda);
+			listado = articulosService.findAllByTitle(claveBusqueda);
 			
-			req.setAttribute(ViewKeysEnums.LISTADO.getParam(), listado);
+			Double total = listado.stream()
+				.map(x -> x.getPrecio())
+				.reduce(0d, (x, y) -> x + y);
+			
+			req.getSession().setAttribute(ViewKeysEnums.TOTAL.getParam(), total);
+			req.getSession().setAttribute(ViewKeysEnums.LISTADO.getParam(), listado);
 			getServletContext().getRequestDispatcher(ViewEnums.LISTADO_GENERAL.getParam()).forward(req, resp);
 			
 		} catch (ServiceException e) {

@@ -68,9 +68,9 @@ public class AbstractBaseService<T> implements GenericService<T> {
 		}
 	}
 	
-	public List<T> findAllBy(String criterio) throws ServiceException {
+	public List<T> findAllByTitle(String criterio) throws ServiceException {
 		try {
-			return this.genericDao.findBySQL(criterio);
+			return this.genericDao.findByTitle(criterio);
 		} catch (GenericException e) {
 			throw new ServiceException("Error consultado entidad", e);
 		}

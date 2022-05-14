@@ -65,5 +65,11 @@ public class SociosDaoImpl extends JdbcDaoBase<Socios> implements SociosDao {
 		}
 		return entity;
 	}
+
+	@Override
+	public List<Socios> findByTitle(String sql) throws GenericException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
