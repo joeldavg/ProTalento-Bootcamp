@@ -121,7 +121,7 @@
 			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			      </div>
 			      <div class="modal-body">
-			        ï¿½Desea eliminar el articulo?
+			      	¿Desea eliminar el articulo?
 			      </div>
 			      <div class="modal-footer">
 			      	<form action="<%=request.getContextPath()%>/controllers/EliminarProductoServlet" id="eliminarForm">
