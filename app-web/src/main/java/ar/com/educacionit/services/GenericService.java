@@ -17,6 +17,4 @@ public interface GenericService<T> {
 	
 	public List<T> findAll() throws ServiceException;
 	
-	public List<T> findAllBy(String criterio) throws ServiceException;
-
 }

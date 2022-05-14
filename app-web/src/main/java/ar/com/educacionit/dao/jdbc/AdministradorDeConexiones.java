@@ -14,17 +14,15 @@ public class AdministradorDeConexiones {
 //		String database = "d86dco3s4cbn67";
 //		String user = "uihlfzqssvuuli";
 //		String password = "5f870cbebd326229243453631cdb2d28c0c8dbee2f3a883d0bdf3845fd7ab2ae";
-//		
-//		String url = "jdbc:postgresql://" + host + ":5432/" + database;
-//		String driverName = "org.postgresql.Driver";
-//		// String driverName = "com.mysql.cj.jdbc.Driver";
 		
 		String user = System.getenv("SPRING_DATASOURCE_USERNAME"); 
 		String password = System.getenv("SPRING_DATASOURCE_PASSWORD"); 
 		String driverName = System.getenv("SPRING_DATASOURCE_DRIVER");
 		String url = System.getenv("SPRING_DATASOURCE_URL");;
+//		String url = "jdbc:postgresql://" + host + ":5432/" + database;
+//		String driverName = "org.postgresql.Driver";
+//		// String driverName = "com.mysql.cj.jdbc.Driver";
 		
-
 		try {
 			Class.forName(driverName);
 			Connection connection = DriverManager.getConnection(url, user, password);

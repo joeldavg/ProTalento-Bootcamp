@@ -5,6 +5,7 @@ public enum ViewKeysEnums {
 	USERNAME("username"),
 	PASSWORD("password"),
 	ERROR_GENERAL("error"),
+	EXITO("exito"),
 	USUARIO_PASSWORD_INVALIDO("usuario/password incorrectos"), 
 	USER("user"),
 	UPLOAD_FILE("uploadfile"),
@@ -13,7 +14,10 @@ public enum ViewKeysEnums {
 	ARTICULOS_OKS("articulos_oks"), 
 	FORMATO("formato"),
 	LISTADO("listado"), 
-	CLAVE_BUSQUEDA("clave_busqueda");
+	CLAVE_BUSQUEDA("clave_busqueda"), 
+	TOTAL("total"),
+	ID_ARTICULO_ELIMINAR("id_articulo_eliminar"),
+	ID_ARTICULO_ACTUALIZAR("id_articulo_actualizar");
 	
 	private String param;
 

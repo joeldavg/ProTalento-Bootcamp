@@ -2,8 +2,10 @@ package ar.com.educacionit.dao.impl;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 import ar.com.educacionit.dao.CategoriaDao;
+import ar.com.educacionit.dao.exceptions.GenericException;
 import ar.com.educacionit.domain.Categorias;
 
 public class CategoriaDaoImpl extends JdbcDaoBase<Categorias> implements CategoriaDao {

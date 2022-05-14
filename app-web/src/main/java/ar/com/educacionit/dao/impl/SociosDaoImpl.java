@@ -65,5 +65,5 @@ public class SociosDaoImpl extends JdbcDaoBase<Socios> implements SociosDao {
 		}
 		return entity;
 	}
-	
+
 }
